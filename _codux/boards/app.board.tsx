@@ -1,0 +1,47 @@
+import { createBoard } from '@wixc3/react-board';
+import { createRemixStub } from '@remix-run/testing';
+import App, { ErrorBoundary as rootErrorBoundary } from 'app/root';
+import HomePage, { loader as homePageLoader } from 'app/routes/_index/route';
+import AboutPage from 'app/routes/about/route';
+import ProductsPage, { loader as productsPageLoader } from 'app/routes/products/route';
+import ProductDetailsPage, {
+    loader as productDetailsPageLoader,
+    ErrorBoundary as productDetailsErrorBoundary,
+} from 'app/routes/products_.$slug/route';
+import { ROUTES } from '~/router/config';
+
+const AppWrapper = createRemixStub([
+    {
+        Component: () => {
+            return <App />;
+        },
+        ErrorBoundary: rootErrorBoundary,
+        children: [
+            {
+                path: ROUTES.home.path,
+                Component: HomePage,
+                loader: homePageLoader,
+            },
+            {
+                path: ROUTES.about.path,
+                Component: AboutPage,
+            },
+            {
+                path: ROUTES.products.path,
+                Component: ProductsPage,
+                loader: productsPageLoader,
+            },
+            {
+                path: ROUTES.product.path,
+                Component: ProductDetailsPage,
+                loader: productDetailsPageLoader,
+                ErrorBoundary: productDetailsErrorBoundary,
+            },
+        ],
+    },
+]);
+
+export default createBoard({
+    name: 'App',
+    Board: () => <AppWrapper />,
+});
