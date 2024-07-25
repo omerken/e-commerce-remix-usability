@@ -44,4 +44,9 @@ const AppWrapper = createRemixStub([
 export default createBoard({
     name: 'App',
     Board: () => <AppWrapper />,
+    readyToSnapshot: () => {
+        return new Promise((resolve) => {
+            setTimeout(resolve, 3000);
+        });
+    },
 });

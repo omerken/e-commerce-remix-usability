@@ -7,11 +7,12 @@ export default createBoard({
     name: 'Page - Products',
     Board: () => (
         <PageWrapper
-            pageRouteObject={{
-                Component: () => <ProductsPage />,
+            pageRouteParams={{
                 loader: () => ({ products: productsMock }),
             }}
-        />
+        >
+            <ProductsPage />
+        </PageWrapper>
     ),
     tags: ['Page'],
     environmentProps: {

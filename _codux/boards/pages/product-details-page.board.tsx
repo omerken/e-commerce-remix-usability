@@ -8,18 +8,19 @@ export default createBoard({
     name: 'Page - ProductDetails',
     Board: () => (
         <PageWrapper
-            pageRouteObject={{
-                Component: () => (
-                    <MockEcomAPIContextProvider>
-                        <ProductDetailsPage />
-                    </MockEcomAPIContextProvider>
-                ),
+            pageRouteParams={{
                 loader: () => ({ product: productDetailsMock }),
             }}
-        />
+            initialPath="/products/1"
+        >
+            <MockEcomAPIContextProvider>
+                <ProductDetailsPage />
+            </MockEcomAPIContextProvider>
+        </PageWrapper>
     ),
     tags: ['Page'],
     environmentProps: {
         windowHeight: 800,
+        canvasWidth: 160,
     },
 });

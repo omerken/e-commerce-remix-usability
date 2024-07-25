@@ -4,7 +4,11 @@ import ThankYouPage from 'app/routes/thank-you/route';
 
 export default createBoard({
     name: 'Page - ThankYou',
-    Board: () => <PageWrapper pageRouteObject={{ Component: () => <ThankYouPage /> }} />,
+    Board: () => (
+        <PageWrapper>
+            <ThankYouPage />
+        </PageWrapper>
+    ),
     tags: ['Page'],
     environmentProps: {
         windowHeight: 800,

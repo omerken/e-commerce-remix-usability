@@ -4,9 +4,14 @@ import AboutPage from 'app/routes/about/route';
 
 export default createBoard({
     name: 'Page - About',
-    Board: () => <PageWrapper pageRouteObject={{ Component: () => <AboutPage /> }} />,
+    Board: () => (
+        <PageWrapper>
+            <AboutPage />
+        </PageWrapper>
+    ),
     tags: ['Page'],
     environmentProps: {
         windowHeight: 800,
+        windowWidth: 959,
     },
 });

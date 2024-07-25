@@ -6,12 +6,9 @@ import HomePage from 'app/routes/_index/route';
 export default createBoard({
     name: 'Page - Home',
     Board: () => (
-        <PageWrapper
-            pageRouteObject={{
-                Component: () => <HomePage />,
-                loader: () => ({ products: productsMock }),
-            }}
-        />
+        <PageWrapper pageRouteParams={{ loader: () => ({ products: productsMock }) }}>
+            <HomePage />
+        </PageWrapper>
     ),
     tags: ['Page'],
     environmentProps: {
