@@ -9,6 +9,7 @@ import ProductDetailsPage, {
     ErrorBoundary as productDetailsErrorBoundary,
 } from 'app/routes/products_.$slug/route';
 import { ROUTES } from '~/router/config';
+import { sleep } from './utils';
 
 const AppWrapper = createRemixStub([
     {
@@ -44,9 +45,5 @@ const AppWrapper = createRemixStub([
 export default createBoard({
     name: 'App',
     Board: () => <AppWrapper />,
-    readyToSnapshot: () => {
-        return new Promise((resolve) => {
-            setTimeout(resolve, 3000);
-        });
-    },
+    readyToSnapshot: () => sleep(3000),
 });

@@ -6,9 +6,9 @@ import { ProductInfo } from '~/components/product-info/product-info';
 import { useRef } from 'react';
 import { useCartOpen } from '~/components/cart/cart-open-context';
 import { ecomApi } from '~/api/ecom-api';
-import { type LoaderFunctionArgs } from '@remix-run/node';
+import type { LoaderFunctionArgs } from '@remix-run/node';
 import { useAddToCart } from '~/api/api-hooks';
-import { useLoaderData, useRouteError } from '@remix-run/react';
+import { isRouteErrorResponse, useLoaderData, useRouteError, json } from '@remix-run/react';
 import { ProductNotFound } from '~/components/product-not-found/product-not-found';
 
 const OptionType = {
@@ -20,21 +20,13 @@ export interface ProductDetailsPageProps {
     className?: string;
 }
 
-export const PRODUCT_NOT_FOUND_ERROR_CODE = `PRODUCT_NOT_FOUND`;
-
-export class ProductNotFoundError extends Error {
-    constructor() {
-        super(PRODUCT_NOT_FOUND_ERROR_CODE);
-    }
-}
-
 export const loader = async ({ params }: LoaderFunctionArgs) => {
     const product = await ecomApi.getProduct(params.slug);
     if (product === undefined) {
-        throw new ProductNotFoundError();
+        throw json('Product Not Found', { status: 400 });
     }
 
-    return { product };
+    return json({ product });
 };
 
 export default function ProductDetailsPage({ className }: ProductDetailsPageProps) {
@@ -45,10 +37,6 @@ export default function ProductDetailsPage({ className }: ProductDetailsPageProp
     // const { data: product, isLoading } = useProduct(productSlug);
     const { trigger: addToCart } = useAddToCart();
     const quantityInput = useRef<HTMLInputElement>(null);
-
-    if (!product) {
-        return <div className={commonStyles.loading}>The product is not found</div>;
-    }
 
     async function addToCartHandler() {
         if (!product?._id) {
@@ -114,8 +102,11 @@ export default function ProductDetailsPage({ className }: ProductDetailsPageProp
 export function ErrorBoundary() {
     const error = useRouteError();
 
-    if ((error as Error)?.message === PRODUCT_NOT_FOUND_ERROR_CODE) {
-        return <ProductNotFound />;
+    if (isRouteErrorResponse(error)) {
+        switch (error.status) {
+            case 404:
+                return <ProductNotFound />;
+        }
     }
 
     throw error;
