@@ -15,7 +15,4 @@ export default createBoard({
         </PageWrapper>
     ),
     tags: ['Page'],
-    environmentProps: {
-        windowHeight: 800,
-    },
 });
