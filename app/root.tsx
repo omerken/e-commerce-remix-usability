@@ -7,9 +7,11 @@ import {
     isRouteErrorResponse,
     useRouteError,
 } from '@remix-run/react';
+import { useEffect } from 'react';
 import { EcomAPIContextProvider } from '~/api/ecom-api-context-provider';
 import { CartOpenContextProvider } from '~/components/cart/cart-open-context';
 import { SiteWrapper } from '~/components/site-wrapper/site-wrapper';
+import { ROUTES } from '~/router/config';
 import '~/styles/index.css';
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -43,34 +45,29 @@ export default function App() {
 }
 
 export function ErrorBoundary() {
-    let error = useRouteError();
+    const error = useRouteError();
 
-    if (isRouteErrorResponse(error)) {
-        return (
-            <>
-                <h1>
-                    {error.status} {error.statusText}
-                </h1>
-                <p>{error.data}</p>
-            </>
-        );
-    }
+    const isRouteError = isRouteErrorResponse(error);
 
-    if (error instanceof Error) {
-        error = error.message;
-    } else {
-        error = JSON.stringify(error);
-    }
+    useEffect(() => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        let title: string = (error as any).message ?? 'Oops, something went wrong';
+        let message: string | undefined = '';
 
-    return (
-        <section
-            style={{
-                color: 'red',
-                fontSize: 18,
-                textAlign: 'center',
-            }}
-        >
-            {String(error)}
-        </section>
-    );
+        if (isRouteError) {
+            if (error.status === 404) {
+                title = 'Page Not Found';
+                message = "Looks like the page you're trying to visit doesn't exist";
+            } else {
+                title = `${error.status} - ${error.statusText}`;
+                message = error.data?.message ?? '';
+            }
+        }
+
+        // hack to handle https://github.com/remix-run/remix/issues/1136
+        window.location.href = ROUTES.error.to(title, message);
+    }, [isRouteError, error]);
+
+    // we are navigating to the error page in the effect above
+    return null;
 }
