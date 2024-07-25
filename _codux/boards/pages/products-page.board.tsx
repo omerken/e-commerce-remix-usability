@@ -1,18 +1,15 @@
 import { createBoard } from '@wixc3/react-board';
 import { PageWrapper } from '_codux/board-wrappers/page-wrapper';
-import { productsMock } from '_codux/mocks/products';
-import ProductsPage from 'app/routes/products/route';
+import ProductsPage, { loader } from 'app/routes/products/route';
+import { sleep } from '../utils';
 
 export default createBoard({
     name: 'Page - Products',
     Board: () => (
-        <PageWrapper
-            pageRouteParams={{
-                loader: () => ({ products: productsMock }),
-            }}
-        >
+        <PageWrapper pageRouteParams={{ loader }}>
             <ProductsPage />
         </PageWrapper>
     ),
     tags: ['Page'],
+    readyToSnapshot: () => sleep(3000),
 });
