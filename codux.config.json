@@ -3,12 +3,13 @@
   "boardGlobalSetup": "./_codux/boards-global-setup.ts",
   "componentsDiscovery": {
     "include": ["src/**"],
-    "exclude": ["src/_codux/component-templates/**"]
+    "exclude": ["_codux/**"]
   },
   "newComponent": {
     "componentsPath": "src/components",
     "templatesPath": "_codux/component-templates"
   },
+  "boardsPath": "_codux/boards/components",
   "safeRender": {
     "maxInstancesPerComponent": 1000
   },
