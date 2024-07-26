@@ -51,18 +51,7 @@ export function ErrorBoundary() {
 
     useEffect(() => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        let title: string = (error as any).message ?? 'Oops, something went wrong';
-        let message: string | undefined = '';
-
-        if (isRouteError) {
-            if (error.status === 404) {
-                title = 'Page Not Found';
-                message = "Looks like the page you're trying to visit doesn't exist";
-            } else {
-                title = `${error.status} - ${error.statusText}`;
-                message = error.data?.message ?? '';
-            }
-        }
+        const { title, message } = getErrorDetails(error);
 
         // hack to handle https://github.com/remix-run/remix/issues/1136
         window.location.href = ROUTES.error.to(title, message);
@@ -70,4 +59,23 @@ export function ErrorBoundary() {
 
     // we are navigating to the error page in the effect above
     return null;
+}
+
+function getErrorDetails(error: unknown) {
+    let title: string;
+    let message: string | undefined;
+
+    if (isRouteErrorResponse(error)) {
+        if (error.status === 404) {
+            title = 'Page Not Found';
+            message = "Looks like the page you're trying to visit doesn't exist";
+        } else {
+            title = `${error.status} - ${error.statusText}`;
+            message = error.data?.message ?? '';
+        }
+    } else {
+        title = 'Unknown error ocurred';
+    }
+
+    return { title, message };
 }
