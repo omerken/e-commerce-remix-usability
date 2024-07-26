@@ -1,35 +1,38 @@
+import { useRef } from 'react';
 import classNames from 'classnames';
-import styles from './product-details.module.scss';
+import type { LinksFunction, LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
 import commonStyles from '~/styles/common-styles.module.scss';
 import { ProductImages } from '~/components/product-images/product-images';
 import { ProductInfo } from '~/components/product-info/product-info';
-import { useRef } from 'react';
 import { useCartOpen } from '~/components/cart/cart-open-context';
 import { ecomApi } from '~/api/ecom-api';
-import type { LoaderFunctionArgs } from '@remix-run/node';
 import { useAddToCart } from '~/api/api-hooks';
 import { isRouteErrorResponse, useLoaderData, useRouteError, json } from '@remix-run/react';
 import { ProductNotFound } from '~/components/product-not-found/product-not-found';
+import { ROUTES } from '~/router/config';
+import styles from './product-details.module.scss';
 
 const OptionType = {
     // import { OptionType } from '@wix/stores/build/cjs/src/stores-catalog-v1-product.universal';
     color: 'color',
 } as const;
 
-export interface ProductDetailsPageProps {
-    className?: string;
-}
-
-export const loader = async ({ params }: LoaderFunctionArgs) => {
+export const loader = async ({ params, request }: LoaderFunctionArgs) => {
+    if (!params.slug) {
+        throw new Error('Missing product id');
+    }
     const product = await ecomApi.getProduct(params.slug);
     if (product === undefined) {
         throw json('Product Not Found', { status: 400 });
     }
 
-    return json({ product });
+    const requestOrigin = new URL(request.url).origin;
+    const canonicalUrl = new URL(ROUTES.product.to(params.slug), requestOrigin).toString();
+
+    return json({ product, canonicalUrl });
 };
 
-export default function ProductDetailsPage({ className }: ProductDetailsPageProps) {
+export default function ProductDetailsPage() {
     const { product } = useLoaderData<typeof loader>();
     const { setIsOpen } = useCartOpen();
     // const { slug: productSlug } = useParams<RouteParams['/product/:slug']>();
@@ -60,7 +63,7 @@ export default function ProductDetailsPage({ className }: ProductDetailsPageProp
     }
 
     return (
-        <div className={classNames(styles.root, className)}>
+        <div className={styles.root}>
             <ProductImages
                 mainImage={product.media?.mainMedia}
                 images={product.media?.items}
@@ -111,3 +114,73 @@ export function ErrorBoundary() {
 
     throw error;
 }
+
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+    if (!data) {
+        return [];
+    }
+
+    const title = data.product.name ?? 'Product Details';
+    const description = data.product.description ?? 'Product Description';
+    const coverImage =
+        data.product.media?.mainMedia?.image?.url ?? 'https://e-commerce.com/image.png';
+
+    return [
+        { title: title },
+        {
+            name: 'description',
+            content: description,
+        },
+        {
+            name: 'author',
+            content: 'Codux',
+        },
+        {
+            tagName: 'link',
+            rel: 'canonical',
+            href: data.canonicalUrl,
+        },
+        {
+            property: 'robots',
+            content: 'index, follow',
+        },
+        {
+            property: 'og:title',
+            content: title,
+        },
+        {
+            property: 'og:description',
+            content: description,
+        },
+        {
+            property: 'og:image',
+            content: coverImage,
+        },
+        {
+            name: 'twitter:card',
+            content: 'summary_large_image',
+        },
+        {
+            name: 'twitter:title',
+            content: title,
+        },
+        {
+            name: 'twitter:description',
+            content: description,
+        },
+        {
+            name: 'twitter:image',
+            content: coverImage,
+        },
+    ];
+};
+
+export const links: LinksFunction = () => {
+    return [
+        {
+            rel: 'icon',
+            href: '/favicon.ico',
+            type: 'image/ico',
+        },
+    ];
+};

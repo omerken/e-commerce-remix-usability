@@ -1,35 +1,25 @@
-import type { MetaFunction } from '@remix-run/node';
-import classNames from 'classnames';
-import styles from './index.module.scss';
+import { LinksFunction, LoaderFunctionArgs } from '@remix-run/node';
 import { HeroImage } from '~/components/hero-image/hero-image';
 import { ProductCard } from '~/components/product-card/product-card';
-import { Link, useLoaderData, useNavigate } from '@remix-run/react';
+import { Link, MetaFunction, useLoaderData, useNavigate } from '@remix-run/react';
 import { ecomApi } from '~/api/ecom-api';
 import { ROUTES } from '~/router/config';
+import styles from './index.module.scss';
 
-export interface HomePageProps {
-    className?: string;
-}
-
-export const meta: MetaFunction = () => {
-    return [
-        { title: 'Ecom Template' },
-        { name: 'description', content: 'Welcome to the Ecom Template' },
-    ];
-};
-
-export const loader = async () => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
     const products = await ecomApi.getPromotedProducts();
-    return { products };
+    const canonicalUrl = new URL(request.url).origin;
+
+    return { products, canonicalUrl };
 };
 
-export default function HomePage({ className }: HomePageProps) {
+export default function HomePage() {
     const navigate = useNavigate();
 
     const { products } = useLoaderData<typeof loader>();
 
     return (
-        <div className={classNames(styles.root, className)}>
+        <div className={styles.root}>
             <HeroImage
                 title="Incredible Prices on All Your Favorite Items"
                 topLabel="Best Prices"
@@ -57,3 +47,68 @@ export default function HomePage({ className }: HomePageProps) {
         </div>
     );
 }
+
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+    const title = 'E-Commerce App';
+    const description = 'Welcome to the E-Commerce App';
+    const imageUrl = 'https://e-commerce.com/image.png';
+
+    return [
+        { title },
+        {
+            name: 'description',
+            content: description,
+        },
+        {
+            name: 'author',
+            content: 'Codux',
+        },
+        {
+            tagName: 'link',
+            rel: 'canonical',
+            href: data?.canonicalUrl,
+        },
+        {
+            property: 'robots',
+            content: 'index, follow',
+        },
+        {
+            property: 'og:title',
+            content: title,
+        },
+        {
+            property: 'og:description',
+            content: description,
+        },
+        {
+            property: 'og:image',
+            content: imageUrl,
+        },
+        {
+            name: 'twitter:card',
+            content: 'summary_large_image',
+        },
+        {
+            name: 'twitter:title',
+            content: title,
+        },
+        {
+            name: 'twitter:description',
+            content: description,
+        },
+        {
+            name: 'twitter:image',
+            content: imageUrl,
+        },
+    ];
+};
+
+export const links: LinksFunction = () => {
+    return [
+        {
+            rel: 'icon',
+            href: '/favicon.ico',
+            type: 'image/ico',
+        },
+    ];
+};

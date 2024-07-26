@@ -1,25 +1,23 @@
-import classNames from 'classnames';
-import styles from './products.module.scss';
+import { LinksFunction, LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
+import { Link, useLoaderData } from '@remix-run/react';
 import { ProductCard } from '~/components/product-card/product-card';
 import { getImageHttpUrl } from '~/api/wix-image';
 import { ecomApi } from '~/api/ecom-api';
-import { Link, useLoaderData } from '@remix-run/react';
 import { ROUTES } from '~/router/config';
+import styles from './products.module.scss';
 
-export interface ProductsPageProps {
-    className?: string;
-}
-
-export const loader = async () => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
     const products = await ecomApi.getAllProducts();
-    return { products };
+    const originUrl = new URL(request.url).origin;
+
+    return { products, canonicalUrl: new URL(ROUTES.products.path, originUrl).toString() };
 };
 
-export default function ProductsPage({ className }: ProductsPageProps) {
+export default function ProductsPage() {
     const { products: myProducts } = useLoaderData<typeof loader>();
 
     return (
-        <div className={classNames(styles.root, className)}>
+        <div className={styles.root}>
             <h1 className={styles.title}>All Products</h1>
             <div className={styles.gallery}>
                 {myProducts?.map(
@@ -43,3 +41,68 @@ export default function ProductsPage({ className }: ProductsPageProps) {
         </div>
     );
 }
+
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+    const title = 'E-Commerce App - Projects';
+    const description = 'Welcome to the E-Commerce App - Projects Page';
+    const imageUrl = 'https://e-commerce.com/image.png';
+
+    return [
+        { title },
+        {
+            name: 'description',
+            content: description,
+        },
+        {
+            name: 'author',
+            content: 'Codux',
+        },
+        {
+            tagName: 'link',
+            rel: 'canonical',
+            href: data?.canonicalUrl,
+        },
+        {
+            property: 'robots',
+            content: 'index, follow',
+        },
+        {
+            property: 'og:title',
+            content: title,
+        },
+        {
+            property: 'og:description',
+            content: description,
+        },
+        {
+            property: 'og:image',
+            content: imageUrl,
+        },
+        {
+            name: 'twitter:card',
+            content: 'summary_large_image',
+        },
+        {
+            name: 'twitter:title',
+            content: title,
+        },
+        {
+            name: 'twitter:description',
+            content: description,
+        },
+        {
+            name: 'twitter:image',
+            content: imageUrl,
+        },
+    ];
+};
+
+export const links: LinksFunction = () => {
+    return [
+        {
+            rel: 'icon',
+            href: '/favicon.ico',
+            type: 'image/ico',
+        },
+    ];
+};

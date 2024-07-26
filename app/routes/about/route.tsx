@@ -1,13 +1,16 @@
-import classNames from 'classnames';
+import { LoaderFunctionArgs } from 'react-router-dom';
+import { LinksFunction, MetaFunction } from '@remix-run/node';
+import { ROUTES } from '~/router/config';
 import styles from './about.module.scss';
 
-export interface AboutPageProps {
-    className?: string;
-}
+export const loader = async ({ request }: LoaderFunctionArgs) => {
+    const originUrl = new URL(request.url).origin;
+    return { canonicalUrl: new URL(ROUTES.about.path, originUrl).toString() };
+};
 
-export default function AboutPage({ className }: AboutPageProps) {
+export default function AboutPage() {
     return (
-        <div className={classNames(styles.root, className)}>
+        <div className={styles.root}>
             <div className={styles.text}>
                 <h1 className={styles.title}>I&apos;m a Title</h1>
                 <p className={styles.paragraph}>
@@ -25,3 +28,68 @@ export default function AboutPage({ className }: AboutPageProps) {
         </div>
     );
 }
+
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+    const title = 'E-Commerce App - About';
+    const description = 'Welcome to the E-Commerce App - About Page';
+    const imageUrl = 'https://e-commerce.com/image.png';
+
+    return [
+        { title },
+        {
+            name: 'description',
+            content: description,
+        },
+        {
+            name: 'author',
+            content: 'Codux',
+        },
+        {
+            tagName: 'link',
+            rel: 'canonical',
+            href: data?.canonicalUrl,
+        },
+        {
+            property: 'robots',
+            content: 'index, follow',
+        },
+        {
+            property: 'og:title',
+            content: title,
+        },
+        {
+            property: 'og:description',
+            content: description,
+        },
+        {
+            property: 'og:image',
+            content: imageUrl,
+        },
+        {
+            name: 'twitter:card',
+            content: 'summary_large_image',
+        },
+        {
+            name: 'twitter:title',
+            content: title,
+        },
+        {
+            name: 'twitter:description',
+            content: description,
+        },
+        {
+            name: 'twitter:image',
+            content: imageUrl,
+        },
+    ];
+};
+
+export const links: LinksFunction = () => {
+    return [
+        {
+            rel: 'icon',
+            href: '/favicon.ico',
+            type: 'image/ico',
+        },
+    ];
+};
