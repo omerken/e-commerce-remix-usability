@@ -7,7 +7,7 @@ import ProductsPage, { loader as productsPageLoader } from 'app/routes/products/
 import ProductDetailsPage, {
     loader as productDetailsPageLoader,
     ErrorBoundary as productDetailsErrorBoundary,
-} from 'app/routes/products_.$slug/route';
+} from 'app/routes/products_.$productId/route';
 import { ROUTES } from '~/router/config';
 import { sleep } from './utils';
 

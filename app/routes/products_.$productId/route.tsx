@@ -13,21 +13,20 @@ import { ROUTES } from '~/router/config';
 import styles from './product-details.module.scss';
 
 const OptionType = {
-    // import { OptionType } from '@wix/stores/build/cjs/src/stores-catalog-v1-product.universal';
     color: 'color',
 } as const;
 
 export const loader = async ({ params, request }: LoaderFunctionArgs) => {
-    if (!params.slug) {
+    if (!params.productId) {
         throw new Error('Missing product id');
     }
-    const product = await ecomApi.getProduct(params.slug);
+    const product = await ecomApi.getProduct(params.productId);
     if (product === undefined) {
         throw json('Product Not Found', { status: 400 });
     }
 
     const requestOrigin = new URL(request.url).origin;
-    const canonicalUrl = new URL(ROUTES.product.to(params.slug), requestOrigin).toString();
+    const canonicalUrl = new URL(ROUTES.product.to(params.productId), requestOrigin).toString();
 
     return json({ product, canonicalUrl });
 };
@@ -35,9 +34,7 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
 export default function ProductDetailsPage() {
     const { product } = useLoaderData<typeof loader>();
     const { setIsOpen } = useCartOpen();
-    // const { slug: productSlug } = useParams<RouteParams['/product/:slug']>();
 
-    // const { data: product, isLoading } = useProduct(productSlug);
     const { trigger: addToCart } = useAddToCart();
     const quantityInput = useRef<HTMLInputElement>(null);
 

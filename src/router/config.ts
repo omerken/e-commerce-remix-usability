@@ -3,7 +3,7 @@ import { generatePath } from '@remix-run/react';
 const HOME = '/';
 const ABOUT = '/about';
 const PRODUCTS = '/products';
-const PRODUCT = `${PRODUCTS}/:slug`;
+const PRODUCT = `${PRODUCTS}/:productId`;
 const THANK_YOU = '/thank-you';
 const ERROR = '/error';
 
@@ -14,7 +14,7 @@ export const ROUTES = {
     thankYou: { path: THANK_YOU, to: () => THANK_YOU },
     product: {
         path: PRODUCT,
-        to: (productSlug: string) => generatePath(PRODUCT, { slug: productSlug }),
+        to: (slug: string) => generatePath(PRODUCT, { productId: slug }),
     },
     error: {
         path: ERROR,
