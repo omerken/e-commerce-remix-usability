@@ -22,7 +22,7 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
     }
     const product = await ecomApi.getProduct(params.productId);
     if (product === undefined) {
-        throw json('Product Not Found', { status: 400 });
+        throw json('Product Not Found', { status: 404 });
     }
 
     const requestOrigin = new URL(request.url).origin;
