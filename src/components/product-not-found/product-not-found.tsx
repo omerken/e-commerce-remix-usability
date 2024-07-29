@@ -1,11 +1,10 @@
-import React from 'react';
 import CommonStyles_module from '~/styles/common-styles.module.scss';
 import styles from './product-not-found.module.scss';
 import classNames from 'classnames';
 import { Link } from '@remix-run/react';
 import { ROUTES } from '~/router/config';
 
-export const ProductNotFound: React.FC = () => {
+export const ProductNotFound = () => {
     return (
         <div className={styles.root}>
             <div className={styles.message}>Product not found</div>

@@ -10,7 +10,7 @@ export interface ErrorProps {
     message: string | undefined | null;
 }
 
-export const ErrorComponent: React.FC<ErrorProps> = ({ title, message }) => {
+export const ErrorComponent = ({ title, message }: ErrorProps) => {
     return (
         <div className={styles.root}>
             <h1>{title ?? unknownErrorTitle}</h1>
