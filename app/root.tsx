@@ -12,7 +12,7 @@ import { EcomAPIContextProvider } from '~/api/ecom-api-context-provider';
 import { CartOpenContextProvider } from '~/components/cart/cart-open-context';
 import { SiteWrapper } from '~/components/site-wrapper/site-wrapper';
 import { ROUTES } from '~/router/config';
-import '~/styles/index.css';
+import '~/styles/index.scss';
 
 export function Layout({ children }: { children: React.ReactNode }) {
     return (
