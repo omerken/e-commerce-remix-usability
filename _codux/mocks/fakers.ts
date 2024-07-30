@@ -1,5 +1,5 @@
 import { products } from '@wix/stores';
-import { WeightUnit, PaymentOptionType } from '@wix/ecom_cart';
+import { cart } from '@wix/ecom';
 import { EcomAPI } from '~/api/ecom-api-context-provider';
 import { faker } from '@faker-js/faker';
 
@@ -91,7 +91,7 @@ export function createCart(products: products.Product[]): Cart {
         lineItems: products.map(createCartItem),
         appliedDiscounts: [],
         conversionCurrency: 'USD',
-        weightUnit: WeightUnit.KG,
+        weightUnit: cart.WeightUnit.KG,
     };
 }
 
@@ -104,7 +104,7 @@ export function createCartItem(product: products.Product): Cart['lineItems'][0] 
         },
         quantity: faker.number.int({ min: 1, max: 10 }),
         image: product.media!.mainMedia!.image!.url!,
-        paymentOption: PaymentOptionType.FULL_PAYMENT_ONLINE,
+        paymentOption: cart.PaymentOptionType.FULL_PAYMENT_ONLINE,
         price: createPrice(),
         descriptionLines: [],
         url: '',
@@ -130,7 +130,7 @@ export function getCartTotals(): CartTotals {
         appliedDiscounts: [],
         calculatedLineItems: [],
         violations: [],
-        weightUnit: WeightUnit.KG,
+        weightUnit: cart.WeightUnit.KG,
         priceSummary: {
             subtotal: createPrice(),
         },
