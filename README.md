@@ -1,68 +1,43 @@
-# Welcome to Remix!
+# eCommerce Starter Project
 
-- [Remix Docs](https://remix.run/docs)
-- [Netlify Functions Overview](https://docs.netlify.com/functions/overview)
+Welcome to our eCommerce Starter project! This is an online shopping platform that uses Wix Headless as the back office for managing the store. This project is designed to be your stepping stone to creating your own online store. It's simple, straightforward, and combines various technologies.
 
-## Netlify Setup
+## Project Overview
 
-1. Install the [Netlify CLI](https://docs.netlify.com/cli/get-started/):
+This project is more than just an example - it's a starter. The main goal here is to empower you to build your own store. You can set up your store on Wix Headless, manage your products, payments, deliveries, and more. Feel free to modify the design or the application however you see fit!
 
-```sh
-npm i -g netlify-cli
-```
+## Technologies Used
 
-If you have previously installed the Netlify CLI, you should update it to the latest version:
+- **Wix eComm, Redirects, SDK, Stores**: Wix libraries used for various CMS functionalities in the app.
+- **Remix**: React framework for server-side rendering and routing.
+- **Vite**: Serves as the front-end development environment.
+- **Classnames**: Assists in assigning multiple classes to elements.
+- **SWR**: Handles caching content in the client app, fetching new content periodically, and providing a simple API between the content cache and React components.
+- **Sass**: Facilitates writing scoped CSS.
+- **Faker**: Generates mock content for boards and tests.
+- **Radix-UI React Icons**: Used for adding icons to the app.
+- **JS Cookie**: A simple, lightweight JS API for handling cookies.
 
-```sh
-npm i -g netlify-cli@latest
-```
+## Getting Started
 
-2. Sign up and log in to Netlify:
+1. Clone the repository in Codux and run the automated installation script.
+1. Create your [Wix Headless](https://dev.wix.com/docs/go-headless/getting-started/setup/general-setup/create-a-project) project and copy your client ID from Settings > Headless Settings > OAuth apps.
+1. Replace the current key in the project's `.env` file in Codux with this one.
 
-```sh
-netlify login
-```
+Now all you have to do is deploy your Remix app and manage your store through Wix!
 
-3. Create a new site:
+## Using Test Data
 
-```sh
-netlify init
-```
+Most of our boards are wrapped in a context provider that returns mock data (using Faker) instead of fetching it from Wix Headless. We do this for a few reasons:
 
-## Development
+- It allows us to test and design components without adding data in Wix Headless (or anywhere else).
+- It allows us to create boards for different scenarios: very long text, very short text, different numbers of items, etc.
+- We can use our boards in tests.
 
-Ensure all packages are installed by running:
+## Board Templates
 
-```sh
-npm install
-```
+Boards often require a rendering environment that serves as a context for components, providing the necessary wrappers for data providers, routers, and styles that are external to the component itself. This environment ensures that all components can be visually edited and interacted with as intended. Codux empowers users to create [custom templates](https://help.codux.com/kb/en/article/kb26227) for their projects, which serve as a foundation for new boards. These board templates are designed to include all the essential elements a user might need, ensuring consistency and adherence to design intentions.
 
-Run
+The project comes with 5 board templates that include connections to test data or real data, and components or pages.
 
-```sh
-netlify dev
-```
-
-Open up [http://localhost:8888](http://localhost:8888), and you're ready to go!
-
-### Serve your site locally
-
-To serve your site locally in a production-like environment, run
-
-```sh
-netlify serve
-```
-
-Your site will be available at [http://localhost:8888](http://localhost:8888). Note that it will not auto-reload when you make changes.
-
-## Deployment
-
-There are two ways to deploy your app to Netlify, you can either link your app to your git repo and have it auto deploy changes to Netlify, or you can deploy your app manually. If you've followed the setup instructions already, all you need to do is run this:
-
-```sh
-# preview deployment
-netlify deploy --build
-
-# production deployment
-netlify deploy --build --prod
-```
+Happy coding!
