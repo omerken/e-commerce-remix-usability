@@ -4,11 +4,12 @@ import { ProductCard } from '~/components/product-card/product-card';
 import { Link, MetaFunction, useLoaderData, useNavigate } from '@remix-run/react';
 import { ecomApi } from '~/api/ecom-api';
 import { ROUTES } from '~/router/config';
+import { getUrlOriginWithPath } from '~/utils';
 import styles from './index.module.scss';
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
     const products = await ecomApi.getPromotedProducts();
-    const canonicalUrl = new URL(request.url).origin;
+    const canonicalUrl = getUrlOriginWithPath(request.url);
 
     return { products, canonicalUrl };
 };

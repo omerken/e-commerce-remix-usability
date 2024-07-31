@@ -2,11 +2,11 @@ import { LinksFunction, LoaderFunctionArgs, MetaFunction } from '@remix-run/node
 import { Link, useSearchParams } from '@remix-run/react';
 import CommonStyles_module from '~/styles/common-styles.module.scss';
 import { ROUTES } from '~/router/config';
+import { getUrlOriginWithPath } from '~/utils';
 import styles from './thank-you.module.scss';
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-    const originUrl = new URL(request.url).origin;
-    return { canonicalUrl: new URL(ROUTES.about.path, originUrl).toString() };
+    return { canonicalUrl: getUrlOriginWithPath(request.url) };
 };
 
 export default function ThankYouPage() {

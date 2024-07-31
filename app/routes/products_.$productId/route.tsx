@@ -9,7 +9,7 @@ import { ecomApi } from '~/api/ecom-api';
 import { useAddToCart } from '~/api/api-hooks';
 import { isRouteErrorResponse, useLoaderData, useRouteError, json } from '@remix-run/react';
 import { ProductNotFound } from '~/components/product-not-found/product-not-found';
-import { ROUTES } from '~/router/config';
+import { getUrlOriginWithPath } from '~/utils';
 import styles from './product-details.module.scss';
 
 const OptionType = {
@@ -25,8 +25,7 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
         throw json('Product Not Found', { status: 404 });
     }
 
-    const requestOrigin = new URL(request.url).origin;
-    const canonicalUrl = new URL(ROUTES.product.to(params.productId), requestOrigin).toString();
+    const canonicalUrl = getUrlOriginWithPath(request.url);
 
     return json({ product, canonicalUrl });
 };
