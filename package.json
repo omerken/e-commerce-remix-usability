@@ -8,9 +8,14 @@
     "build": "remix vite:build",
     "dev": "remix vite:dev",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "start": "netlify serve",
+    "deploy:dev": "netlify deploy --build",
+    "deploy:prod": "netlify deploy --build --prod"
   },
   "dependencies": {
+    "@netlify/functions": "^2.8.0",
+    "@netlify/remix-adapter": "^2.4.0",
     "@radix-ui/react-icons": "^1.3.0",
     "@remix-run/node": "^2.9.2",
     "@remix-run/react": "^2.9.2",
