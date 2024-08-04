@@ -1,0 +1,37 @@
+@import '../../../src/styles/theme.module.scss';
+.button1 {
+    background-color: $charcoal-black;
+    color: $white;
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    max-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.lay {
+}
+.layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.header1 {
+    font-family: $my-prettyfont;
+    font-size: 200px;
+    font-weight: 300;
+}
+.h4 {
+    font-family: $my-prettyfont;
+    font-size: 22px;
+    font-weight: 300;
+}
+.p {
+    font-family: $my-prettyfont;
+    font-size: 32px;
+    font-weight: 300;
+    max-width: 50%;
+    text-align: center;
+    margin-bottom: 50px;
+}
