@@ -5,13 +5,19 @@ export default createBoard({
     name: 'New Board',
     Board: () => (
         <div className={styles.layout}>
-            <h1 className={styles.header1}>404</h1>
-            <h4 className={styles.h4}>Page not found</h4>
-            <p className={styles.p}>
-                Looks like the page you&apos;re trying to visit doesn&apos;t exist
-            </p>
-            <button className={styles.button1}>Back to Homepage</button>
+            <h4 className={styles.h42}>
+                Looks like there&apos;s nothing here.
+                <p className={styles.p2}>
+                    The link you followed may be broken, or the page might have moved.
+                </p>
+            </h4>
+            <div className={styles.div1}>
+                <button className={styles.button2}>Back to Homepage</button>
+            </div>
         </div>
     ),
     isSnippet: true,
+    environmentProps: {
+        windowWidth: 832,
+    },
 });
