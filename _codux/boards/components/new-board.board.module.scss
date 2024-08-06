@@ -1,4 +1,5 @@
 @import '../../../src/styles/theme.module.scss';
+
 .button1 {
     background-color: rgba(40, 43, 45, 0);
     color: $charcoal-black;
@@ -11,13 +12,14 @@
     align-items: center;
     border: 1px solid black;
 }
-.lay {
-}
+
 .layout {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 120px;
+    justify-content: center;
+    max-height: 100%;
 }
 .header1 {
     font-family: $my-prettyfont;
@@ -56,7 +58,7 @@
 }
 .h42 {
     font-weight: 900;
-    font-family: dm sans;
+    font-family: $my-prettyfont;
     font-style: italic;
 }
 .p2 {
@@ -71,4 +73,10 @@
     justify-content: start;
     width: 439px;
     margin-top: 10px;
+}
+.h12 {
+    text-align: start;
+    justify-content: start;
+    font-family: $my-prettyfont;
+    font-weight: 400;
 }
