@@ -2,7 +2,7 @@ import { createBoard } from '@wixc3/react-board';
 import { createRemixStub } from '@remix-run/testing';
 import App, { ErrorBoundary as rootErrorBoundary } from 'app/root';
 import HomePage, { loader as homePageLoader } from 'app/routes/_index/route';
-import AboutPage from 'app/routes/about/route';
+import AboutPage from '~/page/about/route';
 import ProductsPage, { loader as productsPageLoader } from 'app/routes/products/route';
 import ProductDetailsPage, {
     loader as productDetailsPageLoader,

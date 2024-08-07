@@ -1,43 +1,42 @@
-import { LoaderFunctionArgs } from 'react-router-dom';
-import { LinksFunction, MetaFunction } from '@remix-run/node';
+import { LinksFunction, LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
+import { Link, useSearchParams } from '@remix-run/react';
+import CommonStyles_module from '~/styles/common-styles.module.scss';
+import { ROUTES } from '~/router/config';
 import { getUrlOriginWithPath } from '~/utils';
-import styles from './about.module.scss';
-import { Outlet } from '@remix-run/react';
+import styles from './thank-you.module.scss';
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
     return { canonicalUrl: getUrlOriginWithPath(request.url) };
 };
 
-export default function AboutPage() {
+export default function ThankYouPage() {
+    const [search] = useSearchParams();
+    const orderId = search.get('orderId');
+
     return (
         <div className={styles.root}>
-            Route
-            <Outlet />
             <div className={styles.text}>
-                <h1 className={styles.title}>I&apos;m a Title</h1>
+                <h1 className={styles.title}>Thank You!</h1>
                 <p className={styles.paragraph}>
-                    I’m a paragraph. Add your own text and edit me on properties panel on the right.
-                    It’s easy. Just select me and make changes to the font on the styles panel on
-                    the right. I’m a great place for you to tell a story and let your viewers know a
-                    little more about you.
+                    You will receive a confirmation email soon. Your order number: {orderId}
                 </p>
             </div>
-            <img
-                src="https://images.unsplash.com/photo-1622542796254-5b9c46ab0d2f?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Dwixplosives.github.io/codux-assets-storage/add-panel/image-placeholder.jpg"
-                alt=""
-                className={styles.image}
-            />
+            <Link to={ROUTES.products.to()}>
+                <button className={CommonStyles_module.primaryButton} type="button">
+                    Continue Shopping
+                </button>
+            </Link>
         </div>
     );
 }
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
-    const title = 'E-Commerce App - About';
-    const description = 'Welcome to the E-Commerce App - About Page';
+    const title = 'E-Commerce App - Thank You';
+    const description = 'Thank You for your purchase';
     const imageUrl = 'https://e-commerce.com/image.png';
 
     return [
-        { title },
+        { title: title },
         {
             name: 'description',
             content: description,
