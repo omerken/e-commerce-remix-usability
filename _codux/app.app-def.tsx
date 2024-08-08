@@ -252,9 +252,9 @@ export default defineApp<RouteExtraInfo>({
         );
     },
     getNewPageInfo({ fsApi, requestedURI, manifest }) {
-        const routeDir = fsApi.path.join(fsApi.appDefFilePath, '../app/routes');
+        const routeDir = fsApi.path.join(fsApi.path.dirname(fsApi.appDefFilePath), '../app/routes');
         const varNames = new Set<string>();
-        const wantedPath = readableStringToRoutePath(requestedURI, fsApi.path);
+        const wantedPath = readableStringToRoutePath(requestedURI);
         if (requestedURI.length === 0 && manifest.homeRoute) {
             return {
                 isValid: false,
@@ -288,7 +288,7 @@ export default defineApp<RouteExtraInfo>({
             })
             .join('.');
         const pageName = toCamelCase(pageFileName);
-        const pageModule = fsApi.path.join(routeDir, pageFileName + '.tsx');
+        const pageModule = fsApi.path.join(routeDir, pageFileName, 'route.tsx');
         const newPageSourceCode =
             varNames.size === 0
                 ? `
@@ -576,10 +576,9 @@ function filePathToReadableUri(filePathInRouteDir: string, path: PathApi): strin
     return null;
 }
 function readableStringToRoutePath(
-    readableString: string,
-    path: PathApi
+    readableString: string
 ): Array<StaticRoutePart | DynamicRoutePart> {
-    return routePartsToRoutePath(readableString.split(path.sep));
+    return routePartsToRoutePath(readableString.split('/'));
 }
 const routePartsToRoutePath = (routeParts: string[]) => {
     return routeParts
