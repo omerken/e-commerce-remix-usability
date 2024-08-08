@@ -343,9 +343,6 @@ export default ${pageName};
         const appDefDir = fsApi.path.dirname(fsApi.appDefFilePath);
         const rootPath = fsApi.path.join(appDefDir, '../app/root.tsx');
         const routeDir = fsApi.path.join(appDefDir, '../app/routes');
-        // TODO: handle changes
-        const rootPathExportsWatcher = fsApi.watchFileExports(rootPath, () => {});
-        const rootPathExports = await rootPathExportsWatcher.exportNames;
 
         // /product -> product.tsx product/route._index.tsx
         // /product/$ -> product/$.tsx product/$/route.tsx
@@ -525,7 +522,9 @@ export default ${pageName};
 
             return initialManifest;
         };
-
+        // TODO: handle changes
+        const rootPathExportsWatcher = fsApi.watchFileExports(rootPath, () => {});
+        const rootPathExports = await rootPathExportsWatcher.exportNames;
         const watcher = fsApi.watchDirectory(routeDir, async (fileList) => {
             onManifestUpdate(await compute(fileList, rootPathExports));
         });

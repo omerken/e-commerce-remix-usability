@@ -11,7 +11,6 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 export default function AboutPage() {
     return (
         <div className={styles.root}>
-            Route
             <Outlet />
             <div className={styles.text}>
                 <h1 className={styles.title}>I&apos;m a Title</h1>
