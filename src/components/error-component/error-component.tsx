@@ -13,12 +13,12 @@ export const ErrorComponent = ({ title, message }: ErrorProps) => {
     return (
         <div className={styles.layout}>
             <img src={CactusError} alt="cactuserror" className={styles.img} />
-            <h4 className={styles.h4}>
-                Looks like there&apos;s nothing here.
+            <div>
+                <h4 className={styles.h4}>Looks like there&apos;s nothing here.</h4>
                 <p className={styles.p}>
                     The link you followed may be broken, or the page might have moved.
                 </p>
-            </h4>
+            </div>
             <Link className={commonStyles.primaryButton} to={ROUTES.home.to()}>
                 Back to Homepage
             </Link>
