@@ -2,8 +2,7 @@ import { Link } from '@remix-run/react';
 import { ROUTES } from '~/router/config';
 import commonStyles from '~/styles/common-styles.module.scss';
 import styles from './error-component.module.scss';
-
-const unknownErrorTitle = 'Ooops, something went wrong';
+import CactusError from '../../../src/assets/svg/cactuserror.svg';
 
 export interface ErrorProps {
     title: string | undefined | null;
@@ -12,11 +11,16 @@ export interface ErrorProps {
 
 export const ErrorComponent = ({ title, message }: ErrorProps) => {
     return (
-        <div className={styles.root}>
-            <h1>{title ?? unknownErrorTitle}</h1>
-            {message && <div>{message}</div>}
+        <div className={styles.layout}>
+            <img src={CactusError} alt="cactuserror" className={styles.img1} />
+            <h4 className={styles.h42}>
+                Looks like there&apos;s nothing here.
+                <p className={styles.p2}>
+                    The link you followed may be broken, or the page might have moved.
+                </p>
+            </h4>
             <Link className={commonStyles.primaryButton} to={ROUTES.home.to()}>
-                Navigate to Home Page
+                Back to Homepage
             </Link>
         </div>
     );

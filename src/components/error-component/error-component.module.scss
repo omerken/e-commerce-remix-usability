@@ -1,6 +1,78 @@
-.root {
+@import '../../../src/styles/theme.module.scss';
+
+.layout {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    max-height: 100%;
+    gap: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.header1 {
+    font-family: $my-prettyfont;
+    font-size: 160px;
+    font-weight: 300;
+    font-style: normal;
+    line-height: 180px;
+    margin-bottom: 30px;
+}
+
+.h4 {
+    font-family: $my-prettyfont;
+    font-size: 26px;
+    font-weight: 900;
+    margin-bottom: 2px;
+}
+
+.p {
+    font-family: $my-prettyfont;
+    font-size: 20px;
+    font-weight: 200;
+    max-width: 45%;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.H1 {
+    font-size: 100px;
+    font-weight: 200;
+    font-family: dm sans;
+}
+
+.h42 {
+    font-weight: 900;
+    font-family: $my-prettyfont;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.p2 {
+    font-family: $my-prettyfont;
+    font-weight: 300;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.div1 {
+    display: flex;
+    justify-content: center;
+    width: 439px;
+}
+
+.h12 {
+    text-align: start;
+    justify-content: center;
+    font-family: $my-prettyfont;
+    font-weight: 400;
+}
+
+.img1 {
+    width: 400px;
+    height: 200px;
+    margin-bottom: 10px;
 }
