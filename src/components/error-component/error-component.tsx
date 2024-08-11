@@ -12,10 +12,10 @@ export interface ErrorProps {
 export const ErrorComponent = ({ title, message }: ErrorProps) => {
     return (
         <div className={styles.layout}>
-            <img src={CactusError} alt="cactuserror" className={styles.img1} />
-            <h4 className={styles.h42}>
+            <img src={CactusError} alt="cactuserror" className={styles.img} />
+            <h4 className={styles.h4}>
                 Looks like there&apos;s nothing here.
-                <p className={styles.p2}>
+                <p className={styles.p}>
                     The link you followed may be broken, or the page might have moved.
                 </p>
             </h4>
