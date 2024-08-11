@@ -20,6 +20,7 @@
     margin-top: 120px;
     justify-content: center;
     max-height: 100%;
+    gap: 20px;
 }
 .header1 {
     font-family: $my-prettyfont;
@@ -60,23 +61,29 @@
     font-weight: 900;
     font-family: $my-prettyfont;
     font-style: italic;
+    text-align: center;
+    margin-bottom: 10px;
 }
 .p2 {
     font-family: $my-prettyfont;
     font-weight: 300;
     font-size: 14px;
-    text-align: start;
-    margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 10px;
 }
 .div1 {
     display: flex;
-    justify-content: start;
+    justify-content: center;
     width: 439px;
-    margin-top: 10px;
 }
 .h12 {
     text-align: start;
-    justify-content: start;
+    justify-content: center;
     font-family: $my-prettyfont;
     font-weight: 400;
+}
+.img1 {
+    width: 400px;
+    height: 200px;
+    margin-bottom: 10px;
 }
