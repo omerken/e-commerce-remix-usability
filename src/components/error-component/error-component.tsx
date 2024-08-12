@@ -13,7 +13,7 @@ export const ErrorComponent = ({ title, message }: ErrorProps) => {
     return (
         <div className={styles.layout}>
             <img src={CactusError} alt="cactuserror" className={styles.img} />
-            <div>
+            <div className={styles.div1}>
                 <h4 className={styles.h4}>Looks like there&apos;s nothing here.</h4>
                 <p className={styles.p}>
                     The link you followed may be broken, or the page might have moved.
