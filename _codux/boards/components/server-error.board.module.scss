@@ -42,22 +42,27 @@
     margin-bottom: 4px;
 }
 .secondaryButtonVar1 {
-    height: 42px;
+    height: 34px;
     display: flex;
     align-items: center;
-    font: $small-text;
+    font: $extra-small-text;
     border: 1px solid transparent;
     cursor: pointer;
-    padding-right: 22px;
-    padding-left: 22px;
-    border: 1px solid $white;
+    padding-right: 14px;
+    padding-left: 14px;
+    border: 1px solid $charcoal-black;
     z-index: 1;
 
     &:hover {
-        background-color: $white;
+        background-color: $charcoal-black;
         border: 1px solid black;
         border-radius: 4px;
     }
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.04rem;
+    border-radius: 60%;
 }
 
 .secondaryButton {
