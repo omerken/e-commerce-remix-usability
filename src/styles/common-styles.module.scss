@@ -75,3 +75,19 @@
     padding: 30px;
     font: $extra-large-text;
 }
+.h4 {
+    font-weight: 900;
+    font-family: $my-prettyfont;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 2px;
+}
+
+.p {
+    font-family: $my-prettyfont;
+    font-weight: 300;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-style: italic;
+}

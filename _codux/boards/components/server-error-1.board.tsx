@@ -5,22 +5,14 @@ import commonStylesStyles from '../../../src/styles/common-styles.module.scss';
 import Classnames from 'classnames';
 
 export default createBoard({
-    name: 'Server Error',
+    name: 'Server Error 1',
     Board: () => (
         <div className={styles.layout}>
             <ServererrorSvg className={styles.servererrorSvg} />
             <div className={styles.div1}>
-                <h1 className={styles.h4}>Something went wrong.</h1>
-                <p className={styles.p}>Try reloading the page.</p>
+                <h1 className={styles.h4}>Heading 1</h1>
             </div>
-            <button
-                className={Classnames(
-                    styles.secondaryButtonVar1,
-                    commonStylesStyles.secondaryButton
-                )}
-            >
-                Reload Page
-            </button>
+            <button className={styles.secondaryButtonVar1}>Button</button>
         </div>
     ),
     isSnippet: true,
