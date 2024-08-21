@@ -19,7 +19,7 @@ import '~/styles/index.scss';
 export async function loader() {
     return json({
         ENV: {
-            VITE_WIX_CLIENT_ID: process?.env?.VITE_WIX_CLIENT_ID,
+            WIX_CLIENT_ID: process?.env?.WIX_CLIENT_ID,
         },
     });
 }

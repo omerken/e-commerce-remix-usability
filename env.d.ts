@@ -16,7 +16,7 @@ declare module 'raw-loader!.*' {
 }
 
 interface ClientENV {
-    readonly VITE_WIX_CLIENT_ID?: string;
+    readonly WIX_CLIENT_ID?: string;
     // more env variables...
 }
 
