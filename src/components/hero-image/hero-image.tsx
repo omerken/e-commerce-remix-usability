@@ -3,7 +3,7 @@ import largeHeroImage from '~/assets/img/[1024_640]_heroImage04.jpg';
 import xLargeHeroImage from '~/assets/img/[1400_640]_heroImage04.jpg';
 import smallHeroImage from '~/assets/img/[430_340]_heroImage04.jpg';
 import mediumHeroImage from '~/assets/img/[760_460]_heroImage04.jpg';
-import CommonStyles_module from '~/styles/common-styles.module.scss';
+import commonStyles from '~/styles/common-styles.module.scss';
 import styles from './hero-image.module.scss';
 
 export interface HeroImageProps {
@@ -37,10 +37,7 @@ export const HeroImage = ({
                 {buttonLabel && (
                     <button
                         onClick={onButtonClick}
-                        className={classNames(
-                            CommonStyles_module.primaryButton,
-                            styles['overlay-button']
-                        )}
+                        className={classNames(commonStyles.primaryButton, styles['overlay-button'])}
                     >
                         {buttonLabel}
                     </button>
