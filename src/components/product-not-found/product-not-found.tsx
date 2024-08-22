@@ -10,7 +10,7 @@ export const ProductNotFound = () => {
             <div className={styles.message}>Product not found</div>
             <Link
                 to={ROUTES.products.to()}
-                className={classNames(commonStyles.primaryButton, styles['overlay-button'])}
+                className={classNames(commonStyles.primaryButton, styles.overlayButton)}
             >
                 Back to shopping
             </Link>

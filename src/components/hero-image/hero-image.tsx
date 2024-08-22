@@ -32,12 +32,12 @@ export const HeroImage = ({
                 <img src={smallHeroImage} className={styles.image} alt="Hero background" />
             </picture>
             <div className={styles.overlay}>
-                <p className={styles['small-title']}>{title}</p>
-                <h1 className={styles['big-title']}>{bottomLabel} </h1>
+                <p className={styles.smallTitle}>{title}</p>
+                <h1 className={styles.bigTitle}>{bottomLabel} </h1>
                 {buttonLabel && (
                     <button
                         onClick={onButtonClick}
-                        className={classNames(commonStyles.primaryButton, styles['overlay-button'])}
+                        className={classNames(commonStyles.primaryButton, styles.overlayButton)}
                     >
                         {buttonLabel}
                     </button>

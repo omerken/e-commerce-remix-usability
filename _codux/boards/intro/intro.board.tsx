@@ -14,7 +14,7 @@ export default createBoard({
                 create your own store easily. Use Codux to design your website the way you want, and
                 Wix Headless e-commerce services to manage your store.
                 <a href={'https://help.codux.com/kb/en/article/kb37137'}>
-                    <button className={commonStyles['intro-button']}>Learn more</button>
+                    <button className={commonStyles.introButton}>Learn more</button>
                 </a>
             </p>
         </div>
