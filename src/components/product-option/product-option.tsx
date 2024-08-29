@@ -1,27 +1,24 @@
 import { products } from '@wix/stores';
 import classNames from 'classnames';
-import styles from './product-option.module.scss';
 import { Select } from '../select/select';
+import { getChoiceValue } from './product-option-utils';
+import styles from './product-option.module.scss';
 
 export interface ProductOptionProps {
     option: products.ProductOption;
     selectedValue: string | undefined;
+    error: string | undefined;
     onChange: (value: string) => void;
 }
 
-export const ProductOption = ({
-    option: { name, optionType, choices },
-    selectedValue,
-    onChange,
-}: ProductOptionProps) => {
+export const ProductOption = ({ option, selectedValue, error, onChange }: ProductOptionProps) => {
+    const { name, optionType, choices } = option;
+
     if (name === undefined || choices === undefined) {
         return null;
     }
 
-    const selectedChoice = choices.find(
-        (c) =>
-            (optionType === products.OptionType.color ? c.description : c.value) === selectedValue
-    );
+    const selectedChoice = choices.find((c) => getChoiceValue(option, c) === selectedValue);
 
     return (
         <div className={styles.root}>
@@ -38,6 +35,7 @@ export const ProductOption = ({
                                 key={c.value}
                                 className={classNames(styles.colorChoice, {
                                     [styles.selected]: selectedValue === c.description,
+                                    [styles.colorChoiceError]: error !== undefined,
                                 })}
                                 onClick={() => onChange(c.description!)}
                             >
@@ -53,6 +51,7 @@ export const ProductOption = ({
                 </div>
             ) : (
                 <Select
+                    hasError={error !== undefined}
                     options={choices
                         .filter((c) => c.value && c.description)
                         .map((c) => ({
@@ -64,6 +63,7 @@ export const ProductOption = ({
                     onChange={onChange}
                 />
             )}
+            {error !== undefined && <div className={styles.error}>{error}</div>}
         </div>
     );
 };
