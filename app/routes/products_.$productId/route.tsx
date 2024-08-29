@@ -7,10 +7,11 @@ import { useAddToCart } from '~/api/api-hooks';
 import { getEcomApi } from '~/api/ecom-api';
 import { useCartOpen } from '~/components/cart/cart-open-context';
 import { Price } from '~/components/price/price';
+import { ProductAdditionalInfo } from '~/components/product-additional-info/product-additional-info';
 import { ProductImages } from '~/components/product-images/product-images';
-import { ProductInfo } from '~/components/product-info/product-info';
 import { ProductNotFound } from '~/components/product-not-found/product-not-found';
 import { ProductOption } from '~/components/product-option/product-option';
+import { UnsafeRichText } from '~/components/rich-text/rich-text';
 import { getChoiceValue } from '~/components/product-option/product-option-utils';
 import commonStyles from '~/styles/common-styles.module.scss';
 import { getUrlOriginWithPath } from '~/utils';
@@ -66,15 +67,27 @@ export default function ProductDetailsPage() {
             <ProductImages
                 mainImage={product.media?.mainMedia}
                 images={product.media?.items}
-                className={styles.left}
+                className={styles.media}
             />
-            <div className={styles.right}>
-                <div>{product.name}</div>
-                {product.priceData?.formatted?.price && (
-                    <Price
-                        fullPrice={product.priceData?.formatted?.price}
-                        discountedPrice={product.priceData?.formatted?.discountedPrice}
-                    />
+            <div className={styles.productInfo}>
+                <div>
+                    <div className={styles.productName}>{product.name}</div>
+                    {product.sku !== undefined && (
+                        <div className={styles.sku}>SKU: {product.sku}</div>
+                    )}
+                    {product.priceData?.formatted?.price && (
+                        <Price
+                            fullPrice={product.priceData?.formatted?.price}
+                            discountedPrice={product.priceData?.formatted?.discountedPrice}
+                        />
+                    )}
+                </div>
+
+                {product.description && (
+                    /** use unsafe component for description, because it comes from e-commerce site back-office */
+                    <UnsafeRichText className={styles.description}>
+                        {product.description}
+                    </UnsafeRichText>
                 )}
 
                 {product.productOptions?.map((option) => (
@@ -96,9 +109,9 @@ export default function ProductDetailsPage() {
                     />
                 ))}
 
-                <div className={styles.addToCart}>
+                <div className={styles.quantity}>
                     <label>
-                        Quantity: <br />
+                        <div>Quantity:</div>
                         <input
                             ref={quantityInput}
                             defaultValue={1}
@@ -108,6 +121,9 @@ export default function ProductDetailsPage() {
                             placeholder="1"
                         />
                     </label>
+                </div>
+
+                <div>
                     <button
                         onClick={addToCartHandler}
                         className={classNames(commonStyles.primaryButton, styles.addToCartBtn)}
@@ -115,10 +131,8 @@ export default function ProductDetailsPage() {
                         Add to Cart
                     </button>
                 </div>
-                <ProductInfo
-                    className={styles.productInfo}
-                    productInfo={product.additionalInfoSections}
-                />
+
+                <ProductAdditionalInfo productInfo={product.additionalInfoSections} />
             </div>
         </div>
     );
