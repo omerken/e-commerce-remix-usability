@@ -36,9 +36,9 @@ export default function App() {
     return (
         <EcomAPIContextProvider>
             <CartOpenContextProvider>
-                <SiteWrapper>
-                    <Outlet />
-                </SiteWrapper>
+                {/* <SiteWrapper> */}
+                <Outlet />
+                {/* </SiteWrapper> */}
             </CartOpenContextProvider>
         </EcomAPIContextProvider>
     );

@@ -1,0 +1,15 @@
+@import '@styles/theme.module.scss';
+
+.root {
+    min-height: 100%;
+}
+
+.header {
+    background-color: slategray;
+    color: white;
+}
+
+.footer {
+    background-color: darkslategrey;
+    color: white;
+}
