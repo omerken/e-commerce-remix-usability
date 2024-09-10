@@ -1,4 +1,4 @@
-import { currentCart } from '@wix/ecom';
+import { currentCart, orders } from '@wix/ecom';
 import { redirects } from '@wix/redirects';
 import { OAuthStrategy, createClient } from '@wix/sdk';
 import { products, collections } from '@wix/stores';
@@ -36,6 +36,7 @@ function getWixClient() {
             currentCart,
             redirects,
             collections,
+            orders,
         },
         auth: OAuthStrategy({
             clientId: getWixClientId(),
@@ -129,6 +130,9 @@ function createApi() {
         },
         getCategoryBySlug: async (slug: string) => {
             return (await wixClient.collections.getCollectionBySlug(slug)).collection;
+        },
+        getOrder: async (id: string) => {
+            return await wixClient.orders.getOrder(id);
         },
     };
 }
