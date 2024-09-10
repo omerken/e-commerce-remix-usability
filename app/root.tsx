@@ -37,8 +37,10 @@ export default function App() {
         <EcomAPIContextProvider>
             <CartOpenContextProvider>
                 {/* <SiteWrapper> */}
+                {/* <header>Header</header> */}
                 <Outlet />
                 {/* </SiteWrapper> */}
+                {/* <footer>Footer</footer> */}
             </CartOpenContextProvider>
         </EcomAPIContextProvider>
     );
