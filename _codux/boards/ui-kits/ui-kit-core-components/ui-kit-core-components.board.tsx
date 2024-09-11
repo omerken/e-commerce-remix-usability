@@ -28,14 +28,14 @@ export default createBoard({
                 <div className={classNames(styles.buttonsContainer, styles.itemSpacing)}>
                     <div>
                         <button className={classNames(commonStyles.primaryButton)}>Primary</button>
-                        <span className={styles.buttonLabel}>$primary</span>
+                        <span className={styles.buttonLabel}>Primary</span>
                     </div>
 
                     <div>
                         <button className={classNames(commonStyles.secondaryButton)}>
                             Secondary
                         </button>
-                        <span className={styles.buttonLabel}>$secondary</span>
+                        <span className={styles.buttonLabel}>Secondary</span>
                     </div>
                 </div>
                 <hr className={styles.hrLight} />
