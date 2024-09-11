@@ -2,7 +2,6 @@
 
 .introButton {
     text-align: center;
-    font: $small-text;
     background-color: $snow-white;
     padding: 10px;
     width: 160px;
@@ -20,7 +19,6 @@
     background-color: $charcoal-black;
     display: flex;
     align-items: center;
-    font: $small-text;
     color: $snow-white;
     border-radius: 35px;
     height: 42px;
@@ -41,7 +39,6 @@
     height: 42px;
     display: flex;
     align-items: center;
-    font: $small-text;
     cursor: pointer;
     padding-right: 22px;
     padding-left: 22px;
@@ -59,12 +56,10 @@
     height: 42px;
     display: flex;
     align-items: center;
-    font: $small-text;
     cursor: pointer;
     z-index: 1;
 
     &:hover {
-        color: $grey;
         text-decoration: underline;
     }
 }
@@ -76,10 +71,6 @@
     height: 25px;
     width: 60px;
     padding-right: 10px;
-    font: $extra-small-text;
+    font: $extra-small-paragraph;
 }
 
-.loading {
-    padding: 30px;
-    font: $extra-large-text;
-}

@@ -1,0 +1,97 @@
+@import '@styles/theme.module.scss';
+
+.container {
+    font-family: Wix Madefor Text;
+    width: 284px;
+    padding: 16px;
+}
+
+.uikit {
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 12.6px;
+    letter-spacing: 0.1em;
+}
+
+.foundation {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+}
+
+.hrSolid {
+    height: 1px;
+    width: 250px;
+    background-color: #000;
+}
+
+.sectionTitle {
+    font-size: 12px;
+    font-weight: 800;
+    margin-top: 10px;
+}
+
+.hrLight {
+    height: 1px;
+    width: 250px;
+    background-color: #000;
+    opacity: 0.2;
+}
+
+.sectionHeader {
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 12px;
+    letter-spacing: 0.12em;
+    color: #625d5d;
+    margin: 20px 0px 16px;
+}
+
+.variantName {
+    font-size: 9px;
+    font-weight: 800;
+    line-height: 7px;
+}
+
+.fontDetails {
+    font-size: 9px;
+    font-weight: 400;
+    line-height: 8px;
+    max-width: 244px;
+}
+
+.variantSpacing {
+    margin-bottom: 30px;
+    margin-top: 14px;
+}
+
+.extraLargeThinTitle{
+    font: $extra-large-thin-title;
+}
+
+.extraLargeTitle{
+    font: $extra-large-title;
+}
+
+.smallBoldTitle{
+    font: $small-bold-title;
+}
+
+.bigBoldParagraph{
+    font: $big-bold-paragraph;
+}
+
+
+.mediumBoldParagraph{
+    font: $medium-bold-paragraph;
+}
+.mediumParagraph{
+    font: $medium-paragraph;
+}
+
+.smallParagraph{
+    font: $small-paragraph;
+}
+
+.extraSmallParagraph{
+    font: $extra-small-paragraph;
+}

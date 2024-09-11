@@ -23,18 +23,18 @@
 }
 
 .smallTitle {
-    font: $medium-paragraph-bold;
+    font: $small-bold-title;
     margin-top: 80px;
     font-size: 38px;
 }
 
 .bigTitle {
-    max-width: 80%;
     font: $extra-large-thin-title;
     line-height: 1.2;
     font-size: 85px;
     letter-spacing: 2px;
     margin-top: 25px;
+    max-width: 80%;
 }
 
 .overlayButton {
@@ -59,7 +59,8 @@
 
 @media (width <= $mobile-width) {
     .overlay {
-        padding-left: 8vw;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .smallTitle {
@@ -70,6 +71,7 @@
     .bigTitle {
         font-size: 50px;
         margin-top: 11px;
+        max-width: 100%;
     }
 
     .overlayButton {
