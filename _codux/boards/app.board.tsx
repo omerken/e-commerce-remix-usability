@@ -49,8 +49,4 @@ export default createBoard({
     name: 'App',
     Board: () => <AppWrapper />,
     readyToSnapshot: () => sleep(3000),
-    environmentProps: {
-        windowWidth: 1024,
-        windowHeight: 768,
-    },
 });
