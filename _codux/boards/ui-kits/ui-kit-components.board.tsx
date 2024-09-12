@@ -23,11 +23,13 @@ export default createBoard({
                 />
             </Variant>
             <p className={styles.productCardInfo}>Product Card</p>
-            <ProductCard
-                name="Im a product"
-                price={{ formatted: { price: '$15.00' } }}
-                className={classNames(styles.productCard, styles.productCard)}
-            />
+            <Variant name="Product Card Without Image">
+                <ProductCard
+                    name="Im a product"
+                    price={{ formatted: { price: '$15.00' } }}
+                    className={classNames(styles.productCard, styles.productCard)}
+                />
+            </Variant>
             <p className={styles.productCardInfo}>Product Card No Image</p>
         </div>
     ),
