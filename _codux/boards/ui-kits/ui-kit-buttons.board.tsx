@@ -65,14 +65,14 @@ export default createBoard({
                 <hr className={styles.hrLight} />
                 <h4 className={styles.sectionHeader}>SOCIAL ICONS</h4>
                 <Variant name="Social Media Row">
-                    <div className={styles.iconsContainer}>
+                    <div className={classNames(styles.iconsContainer, styles.menu)}>
                         <Variant name="X Icon">
                             <a href="/">
                                 <img className={styles.icon} src={twitterxIcon} alt="twitter" />
                             </a>
                         </Variant>
                         <Variant name="Facebook Icon">
-                            <a href="/">
+                            <a href="/about">
                                 <img className={styles.icon} src={facebookIcon} alt="facebook" />
                             </a>
                         </Variant>

@@ -56,12 +56,16 @@
     font-size: 9px;
 }
 
-.menuContainer {
+.menu {
     display: flex;
     justify-content: space-around;
 }
 
-.iconsContainer{
+.active {
+    color: $black;
+    font-weight: bold;
+}
+.iconsContainer {
     display: flex;
     justify-content: space-between;
 }
