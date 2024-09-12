@@ -1,12 +1,10 @@
-import { createBoard } from '@wixc3/react-board';
-import styles from './ui-kit-core-components.board.module.scss';
-import commonStyles from '~/styles/common-styles.module.scss';
+import { createBoard, Variant } from '@wixc3/react-board';
+import styles from '../../../src/styles/ui-kit-components.module.scss';
 import classNames from 'classnames';
-import { MemoryRouter } from 'react-router-dom';
 import { ProductCard } from '~/components/product-card/product-card';
 
 export default createBoard({
-    name: 'UI Kit - Core Components',
+    name: 'UI Kit - Components',
     Board: () => (
         <div className={styles.container}>
             <div>
@@ -16,12 +14,14 @@ export default createBoard({
                 <h3 className={styles.sectionTitle}>Components</h3>
             </div>
             <h4 className={styles.sectionHeader}>CARDS</h4>
-            <ProductCard
-                name="Im a product"
-                price={{ formatted: { price: '$15.00' } }}
-                className={classNames(styles.productCard, styles.productCard)}
-                imageUrl="https://wixmp-b7f7090100b13623109851bc.wixmp.com/layouters-starters/img_02.jpg"
-            />
+            <Variant name="Product Card">
+                <ProductCard
+                    name="Im a product"
+                    price={{ formatted: { price: '$15.00' } }}
+                    className={classNames(styles.productCard, styles.productCard)}
+                    imageUrl="https://wixmp-b7f7090100b13623109851bc.wixmp.com/layouters-starters/img_02.jpg"
+                />
+            </Variant>
             <p className={styles.productCardInfo}>Product Card</p>
             <ProductCard
                 name="Im a product"

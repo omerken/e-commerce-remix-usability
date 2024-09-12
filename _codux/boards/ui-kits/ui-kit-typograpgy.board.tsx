@@ -1,5 +1,5 @@
 import { createBoard } from '@wixc3/react-board';
-import styles from './ui-kit-foundation.board.module.scss';
+import styles from '../../../src/styles/ui-kit-typography.module.scss';
 import classNames from 'classnames';
 
 export default createBoard({
@@ -80,9 +80,9 @@ export default createBoard({
             </p>
         </div>
     ),
-    isSnippet: false,
+    isSnippet: true,
     environmentProps: {
-        windowWidth: 289,
+        windowWidth: 284,
         windowHeight: 606,
     },
 });
