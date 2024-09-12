@@ -1,0 +1,55 @@
+@import '@styles/theme.module.scss';
+
+.root {
+    display: grid;
+    gap: 12px;
+
+    @media (width >= 1024px) {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.productInfo {
+    display: flex;
+    gap: 12px;
+}
+
+.productName {
+    font: $medium-title;
+    color: $black;
+    margin-bottom: 12px;
+}
+
+.productDetails {
+    display: flex;
+    flex-direction: column;
+    color: $grey;
+}
+
+.orderDetails {
+    margin-top: 3px;
+    display: flex;
+    justify-content: space-between;
+
+    @media (width < 1024px) {
+        flex-direction: column;
+        margin-left: 212px;
+        gap: 12px;
+    }
+}
+
+.quantity {
+    flex-grow: 2;
+
+    @media (width >= 1024px) {
+        text-align: center;
+    }
+}
+
+.subtotal {
+    flex-grow: 1;
+
+    @media (width >= 1024px) {
+        text-align: right;
+    }
+}

@@ -5,6 +5,7 @@ import type { EcomAPI } from '~/api/ecom-api';
 import { EcomAPIContext } from '~/api/ecom-api-context-provider';
 import {
     createCart,
+    createOrder,
     createCategory,
     createProduct,
     createProducts,
@@ -62,6 +63,9 @@ function getEcomApi(settings?: Settings): EcomAPI {
         },
         getCategoryBySlug: () => {
             return Promise.resolve(createCategory(settings));
+        },
+        getOrder: (id: string) => {
+            return Promise.resolve(createOrder(id));
         },
     };
 
