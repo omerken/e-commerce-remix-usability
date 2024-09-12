@@ -10,7 +10,6 @@ export default createBoard({
         </ComponentWrapper>
     ),
     tags: ['Component'],
-    isSnippet: true,
     environmentProps: {
         windowWidth: 500,
         windowHeight: 200,
