@@ -39,7 +39,7 @@ export default createBoard({
             </p>
 
             <Variant name="Small Title">
-                <h6 className={classNames(styles.smallBoldTitle)}>Heading 6</h6>
+                <h6 className={classNames(styles.smallTitle)}>Heading 6</h6>
             </Variant>
             <p className={classNames(styles.variantName, styles.variantSpacing)}>
                 $small-title
@@ -100,7 +100,7 @@ export default createBoard({
     ),
     isSnippet: true,
     environmentProps: {
-        windowWidth: 284,
+        windowWidth: 320,
         windowHeight: 606,
     },
     tags: ['UI Kit'],
