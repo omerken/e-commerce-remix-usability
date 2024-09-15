@@ -64,38 +64,39 @@
     margin-top: 14px;
 }
 
-.extraLargeThinTitle{
+.extraLargeThinTitle {
     font: $extra-large-thin-title;
 }
 
-.extraLargeTitle{
+.extraLargeTitle {
     font: $extra-large-title;
 }
 
-.smallBoldTitle{
+.smallBoldTitle {
     font: $small-bold-title;
 }
 
-.smallTitle{
+.smallTitle {
     font: $small-title;
+    font-weight: 800;
 }
 
-.bigBoldParagraph{
+.bigBoldParagraph {
     font: $big-bold-paragraph;
 }
 
-.mediumBoldParagraph{
+.mediumBoldParagraph {
     font: $medium-bold-paragraph;
 }
 
-.mediumParagraph{
+.mediumParagraph {
     font: $medium-paragraph;
 }
 
-.smallParagraph{
+.smallParagraph {
     font: $small-paragraph;
 }
 
-.extraSmallParagraph{
+.extraSmallParagraph {
     font: $extra-small-paragraph;
 }

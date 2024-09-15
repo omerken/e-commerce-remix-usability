@@ -35,7 +35,7 @@ export default createBoard({
     ),
     isSnippet: true,
     environmentProps: {
-        windowWidth: 289,
+        windowWidth: 347,
         windowHeight: 525,
     },
     tags: ['UI Kit'],
