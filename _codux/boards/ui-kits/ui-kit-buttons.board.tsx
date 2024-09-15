@@ -32,7 +32,7 @@ export default createBoard({
                                 Primary
                             </button>
                         </Variant>
-                        <span className={styles.buttonLabel}>$Primary</span>
+                        <span className={styles.buttonLabel}>Primary</span>
                     </div>
 
                     <div>
@@ -41,7 +41,7 @@ export default createBoard({
                                 Secondary
                             </button>
                         </Variant>
-                        <span className={styles.buttonLabel}>$Secondary</span>
+                        <span className={styles.buttonLabel}>Secondary</span>
                     </div>
                 </div>
                 <hr className={styles.hrLight} />
