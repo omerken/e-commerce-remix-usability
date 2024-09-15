@@ -1,6 +1,22 @@
+@import '@styles/theme.module.scss';
+
 .root {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.title {
+    font: $small-bold-title;
+}
+
+.message {
+    margin-top: 12px;
+    font: $small-title;
+    max-width: 75vw;
+}
+
+.actionButton {
+    margin-top: 24px;
 }
