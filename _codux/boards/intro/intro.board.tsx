@@ -19,11 +19,8 @@ export default createBoard({
             </p>
         </div>
     ),
-    isSnippet: false,
     environmentProps: {
         windowWidth: 1024,
         windowHeight: 768,
-        canvasWidth: 1024,
-        canvasHeight: 768,
     },
 });

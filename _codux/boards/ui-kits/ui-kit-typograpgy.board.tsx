@@ -14,7 +14,7 @@ export default createBoard({
             </div>
 
             <h4 className={styles.sectionHeader}>HEADING</h4>
-            <Variant name="Extra Large Thin Title">
+            <Variant name="Heading 1">
                 <h1 className={styles.heading1}>Heading 1</h1>
             </Variant>
             <p className={classNames(styles.variantName, styles.headlinesSpacing)}>
@@ -22,7 +22,7 @@ export default createBoard({
                 <span className={styles.fontDetails}> DM Sans (100) / 65px / 1.2</span>
             </p>
 
-            <Variant name="Extra Large Title">
+            <Variant name="Heading 2">
                 <h2 className={classNames(styles.heading2)}>HEADING 2</h2>
             </Variant>
             <p className={classNames(styles.variantName, styles.headlinesSpacing)}>
@@ -30,7 +30,7 @@ export default createBoard({
                 <span className={styles.fontDetails}> DM Sans (200) / 45px / 1.4</span>
             </p>
 
-            <Variant name="Small Bold Title">
+            <Variant name="Heading 3">
                 <h3 className={classNames(styles.heading3)}>Heading 3</h3>
             </Variant>
             <p className={classNames(styles.variantName, styles.headlinesSpacing)}>
@@ -38,7 +38,7 @@ export default createBoard({
                 <span className={styles.fontDetails}> DM Sans (900)/ 42px/ 1.4 </span>
             </p>
 
-            <Variant name="Small Title">
+            <Variant name="Heading 6">
                 <h6 className={classNames(styles.heading6)}>Heading 6</h6>
             </Variant>
             <p className={classNames(styles.variantName, styles.headlinesSpacing)}>
