@@ -17,10 +17,11 @@
 .menuButton {
     padding-right: 22px;
     padding-left: 22px;
+    font: $button-font
 }
 
-.menuButton:hover, .activeMenuItem {
-    font-weight: bold;
+.activeMenuItem {
+    font-weight: 500;
 }
 
 .cartButton {
