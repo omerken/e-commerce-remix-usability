@@ -63,7 +63,7 @@ export default createBoard({
                     </div>
                 </Variant>
                 <hr className={styles.hrLight} />
-                <h4 className={styles.sectionHeader}>SOCIAL </h4>
+                <h4 className={styles.sectionHeader}>SOCIAL</h4>
                 <Variant name="Social Media Row">
                     <div className={classNames(styles.iconsContainer, styles.menu)}>
                         <Variant name="X Icon">
@@ -103,7 +103,7 @@ export default createBoard({
     ),
     isSnippet: true,
     environmentProps: {
-        windowWidth: 284,
+        windowWidth: 331,
         windowHeight: 525,
     },
     tags: ['UI Kit'],
