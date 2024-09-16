@@ -1,11 +1,11 @@
-@import '@styles/theme.module.scss';
+@import '@styles/general.scss';
 
 .root {
     padding-bottom: 90px;
 }
 
 .topLabelHighlighted {
-    color: $white;
+    color: var(--white);
     padding: 0 5px;
     display: inline-block;
     margin-bottom: 5%;
@@ -31,6 +31,7 @@
 }
 
 .heroTitle {
+    font: var(--extra-large-thin-title);
     margin-top: 80px;
     font: $heading1;
     text-align: center;
@@ -38,7 +39,7 @@
 
 // --- MEDIA QUERIES ---
 
-@media (430px < width < 980px) {
+@media ($mobile-width < width < $tablet-width) {
     .cardsLayout {
         column-gap: 4vw;
     }
@@ -52,7 +53,7 @@
     }
 }
 
-@media (width <= 430px) {
+@media (width <= $mobile-width) {
     .cardsLayout {
         column-gap: 20px;
     }

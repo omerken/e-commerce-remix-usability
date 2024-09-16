@@ -1,7 +1,5 @@
-@import '@styles/theme.module.scss';
-
 .cart {
-    background-color: $white;
+    background-color: var(--white);
     padding: 15px 10px 10px;
     display: flex;
     flex-direction: column;
@@ -30,11 +28,13 @@
     direction: ltr;
     margin: 14px;
 }
+
 .checkout {
     width: 100%;
     text-align: center;
     justify-content: center;
 }
+
 .subtotalLabel {
     display: flex;
     justify-content: space-between;

@@ -1,9 +1,7 @@
-@import '@styles/theme.module.scss';
-
 .root {
     display: flex;
     flex-direction: column;
-    background-color: $snow-white;
+    background-color: var(--snow-white);
     column-gap: 5px;
     justify-content: center;
     align-content: center;
@@ -16,10 +14,10 @@
 .paragraph {
     font: $paragraph1;
     text-align: center;
+}
 
-    div:first-child {
-        margin-bottom: 24px;
-    }
+.paragraph div:first-child {
+    margin-bottom: 24px;
 }
 
 .text {

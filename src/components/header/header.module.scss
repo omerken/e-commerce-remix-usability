@@ -1,4 +1,4 @@
-@import '@styles/theme.module.scss';
+@import '@styles/general.scss';
 
 .root {
     display: flex;
@@ -29,16 +29,17 @@
 }
 
 .logo {
-    font: 700 18px/1.5 $my-prettyfont;
+    font: 700 18px/1.5 var(--my-pretty-font);
     height: fit-content;
 }
 
-@media (width < 455px) {
+@media (width < $mobile-width) {
     .root {
         display: flex;
         justify-content: center;
         padding: 0px;
     }
+
     .logo {
         display: none;
     }
