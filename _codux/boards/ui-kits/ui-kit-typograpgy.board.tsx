@@ -49,7 +49,7 @@ export default createBoard({
             <h4 className={styles.sectionHeader}>PARAGRAPH</h4>
 
             <Variant name="Paragraph Font">
-                <p className={classNames(styles.bigBoldParagraph)}>Large text</p>
+                <p className={classNames(styles.largeParagraph)}>Large text</p>
             </Variant>
             <p className={classNames(styles.variantName, styles.paragraphSpacing)}>
                 $paragraph-font:
@@ -71,7 +71,7 @@ export default createBoard({
                     We ignite opportunity by setting the world in motion. 0123456789
                 </p>
             </Variant>
-            <p className={classNames(styles.variantName, styles.variantSpacing)}>
+            <p className={classNames(styles.variantName, styles.paragraphSpacing)}>
                 $medium-paragraph:
                 <span className={styles.fontDetails}> DM Sans (300) / 20px / 1.3</span>
             </p>
@@ -81,7 +81,7 @@ export default createBoard({
                     We ignite opportunity by setting the world in motion. 0123456789
                 </p>
             </Variant>
-            <p className={classNames(styles.variantName, styles.variantSpacing)}>
+            <p className={classNames(styles.variantName, styles.paragraphSpacing)}>
                 $small-paragraph:
                 <span className={styles.fontDetails}> DM Sans (200) / 16px / 1.4</span>
             </p>
@@ -91,7 +91,7 @@ export default createBoard({
                     We ignite opportunity by setting the world in motion. 0123456789
                 </p>
             </Variant>
-            <p className={classNames(styles.variantName, styles.variantSpacing)}>
+            <p className={classNames(styles.variantName, styles.paragraphSpacing)}>
                 $extra-small-paragraph:
                 <span className={styles.fontDetails}> DM Sans (400) / 12px / 18px</span>
             </p>
