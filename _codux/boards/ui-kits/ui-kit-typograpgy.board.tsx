@@ -17,7 +17,7 @@ export default createBoard({
             <Variant name="Extra Large Thin Title">
                 <h1 className={styles.extraLargeThinTitle}>Heading 1</h1>
             </Variant>
-            <p className={classNames(styles.variantName, styles.variantSpacing)}>
+            <p className={classNames(styles.variantName, styles.headlinesSpacing)}>
                 $heading1:
                 <span className={styles.fontDetails}> DM Sans (100) / 65px / 1.2</span>
             </p>
@@ -25,7 +25,7 @@ export default createBoard({
             <Variant name="Extra Large Title">
                 <h2 className={classNames(styles.extraLargeTitle)}>HEADING 2</h2>
             </Variant>
-            <p className={classNames(styles.variantName, styles.variantSpacing)}>
+            <p className={classNames(styles.variantName, styles.headlinesSpacing)}>
                 $heading2:
                 <span className={styles.fontDetails}> DM Sans (200) / 45px / 1.4</span>
             </p>
@@ -33,7 +33,7 @@ export default createBoard({
             <Variant name="Small Bold Title">
                 <h3 className={classNames(styles.smallBoldTitle)}>Heading 3</h3>
             </Variant>
-            <p className={classNames(styles.variantName, styles.variantSpacing)}>
+            <p className={classNames(styles.variantName, styles.headlinesSpacing)}>
                 $heading3:
                 <span className={styles.fontDetails}> DM Sans (900)/ 42px/ 1.4 </span>
             </p>
@@ -41,8 +41,8 @@ export default createBoard({
             <Variant name="Small Title">
                 <h6 className={classNames(styles.smallTitle)}>Heading 6</h6>
             </Variant>
-            <p className={classNames(styles.variantName, styles.variantSpacing)}>
-                $heading6<span className={styles.fontDetails}> DM Sans (400)/ 16px/ 1.4 </span>
+            <p className={classNames(styles.variantName, styles.headlinesSpacing)}>
+                $heading6:<span className={styles.fontDetails}> DM Sans (400)/ 16px/ 1.4 </span>
             </p>
 
             <hr className={styles.hrLight} />
@@ -51,7 +51,7 @@ export default createBoard({
             <Variant name="Paragraph Font">
                 <p className={classNames(styles.bigBoldParagraph)}>Large text</p>
             </Variant>
-            <p className={classNames(styles.variantName, styles.variantSpacing)}>
+            <p className={classNames(styles.variantName, styles.paragraphSpacing)}>
                 $paragraph-font:
                 <span className={styles.fontDetails}> DM Sans (400)/ 52px/ 1.6</span>
             </p>
@@ -61,7 +61,7 @@ export default createBoard({
                     We ignite opportunity by setting the world in motion. 0123456789
                 </p>
             </Variant>
-            <p className={classNames(styles.variantName, styles.variantSpacing)}>
+            <p className={classNames(styles.variantName, styles.paragraphSpacing)}>
                 $medium-bold-paragraph:
                 <span className={styles.fontDetails}> DM Sans (1000) / 24px / 1.4</span>
             </p>

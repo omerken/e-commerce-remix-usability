@@ -35,7 +35,7 @@
     width: 250px;
     background-color: #000;
     opacity: 0.2;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 .sectionHeader {
@@ -60,9 +60,17 @@
     max-width: 244px;
 }
 
-.variantSpacing {
+.headlinesSpacing {
     margin-bottom: 20px;
     margin-top: 10px;
+}
+
+.v + .v {
+    margin-top: 10px;
+}
+
+.paragraphSpacing{
+
 }
 
 .extraLargeThinTitle {
