@@ -1,5 +1,9 @@
+@import '@styles/general.scss';
+@import '@styles/typography.scss';
+@import '@styles/colors.scss';
+
 .cart {
-    background-color: var(--white);
+    background-color: $white;
     padding: 15px 10px 10px;
     display: flex;
     flex-direction: column;

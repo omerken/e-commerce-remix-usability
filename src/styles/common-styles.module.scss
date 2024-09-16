@@ -1,4 +1,6 @@
 @import '@styles/general.scss';
+@import '@styles/typography.scss';
+@import '@styles/colors.scss';
 
 .introButton {
     text-align: center;
@@ -6,7 +8,7 @@
     background-color: $snow-white;
     padding: 10px;
     width: 160px;
-    color: var(--charcoal-black);
+    color: $charcoal-black;
     border-radius: 30px;
     margin-top: 20px;
     cursor: pointer;

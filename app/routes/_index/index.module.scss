@@ -1,11 +1,13 @@
 @import '@styles/general.scss';
+@import '@styles/typography.scss';
+@import '@styles/colors.scss';
 
 .root {
     padding-bottom: 90px;
 }
 
 .topLabelHighlighted {
-    color: var(--white);
+    color: $white;
     padding: 0 5px;
     display: inline-block;
     margin-bottom: 5%;
@@ -31,7 +33,7 @@
 }
 
 .heroTitle {
-    font: var(--extra-large-thin-title);
+    font: $heading1;
     margin-top: 80px;
     font: $heading1;
     text-align: center;

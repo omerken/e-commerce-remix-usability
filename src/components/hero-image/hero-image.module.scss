@@ -1,8 +1,9 @@
 @import '@styles/general.scss';
-
+@import '@styles/typography.scss';
+@import '@styles/colors.scss';
 .root {
     position: relative;
-    color: var(--white);
+    color: $white;
 }
 
 .overlay {
