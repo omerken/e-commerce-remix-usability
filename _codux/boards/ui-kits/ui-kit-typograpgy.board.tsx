@@ -18,7 +18,7 @@ export default createBoard({
                 <h1 className={styles.extraLargeThinTitle}>Heading 1</h1>
             </Variant>
             <p className={classNames(styles.variantName, styles.variantSpacing)}>
-                $extra-large-thin-title
+                $heading1:
                 <span className={styles.fontDetails}> DM Sans (100) / 65px / 1.2</span>
             </p>
 
@@ -26,28 +26,27 @@ export default createBoard({
                 <h2 className={classNames(styles.extraLargeTitle)}>HEADING 2</h2>
             </Variant>
             <p className={classNames(styles.variantName, styles.variantSpacing)}>
-                $extra-large-title
-                <span className={styles.fontDetails}> DM Sans (300) / 45px / 1.4</span>
+                $heading2:
+                <span className={styles.fontDetails}> DM Sans (200) / 45px / 1.4</span>
             </p>
 
             <Variant name="Small Bold Title">
                 <h3 className={classNames(styles.smallBoldTitle)}>Heading 3</h3>
             </Variant>
             <p className={classNames(styles.variantName, styles.variantSpacing)}>
-                $small-bold-title
-                <span className={styles.fontDetails}> DM Sans (1000)/ 42px/ 1.4 </span>
+                $heading3:
+                <span className={styles.fontDetails}> DM Sans (900)/ 42px/ 1.4 </span>
             </p>
 
             <Variant name="Small Title">
                 <h6 className={classNames(styles.smallTitle)}>Heading 6</h6>
             </Variant>
             <p className={classNames(styles.variantName, styles.variantSpacing)}>
-                $small-title
-                <span className={styles.fontDetails}> DM Sans (400)/ 16px/ 1.4 </span>
+                $heading6<span className={styles.fontDetails}> DM Sans (400)/ 16px/ 1.4 </span>
             </p>
 
             <hr className={styles.hrLight} />
-            <h4 className={styles.sectionHeader}>Paragraph</h4>
+            <h4 className={styles.sectionHeader}>PARAGRAPH</h4>
 
             <Variant name="Paragraph Font">
                 <p className={classNames(styles.bigBoldParagraph)}>Large text</p>
