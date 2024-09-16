@@ -58,7 +58,7 @@ export default createBoard({
 
             <Variant name="Bold Paragraph">
                 <p className={styles.boldParagraph}>
-                    We ignite opportunity by setting the world in motion. 0123456789
+                    The quick brown fox jumps over the lazy dog. 0123456789
                 </p>
             </Variant>
             <p className={classNames(styles.variantName, styles.paragraphSpacing)}>
@@ -68,7 +68,7 @@ export default createBoard({
 
             <Variant name="Paragraph 1">
                 <p className={styles.paragraph1}>
-                    We ignite opportunity by setting the world in motion. 0123456789
+                    The quick brown fox jumps over the lazy dog. 0123456789
                 </p>
             </Variant>
             <p className={classNames(styles.variantName, styles.paragraphSpacing)}>
@@ -78,7 +78,7 @@ export default createBoard({
 
             <Variant name="Paragraph 2">
                 <p className={styles.paragraph2}>
-                    We ignite opportunity by setting the world in motion. 0123456789
+                    The quick brown fox jumps over the lazy dog. 0123456789
                 </p>
             </Variant>
             <p className={classNames(styles.variantName, styles.paragraphSpacing)}>
@@ -88,7 +88,7 @@ export default createBoard({
 
             <Variant name="Paragraph 3">
                 <p className={styles.paragraph3}>
-                    We ignite opportunity by setting the world in motion. 0123456789
+                    The quick brown fox jumps over the lazy dog. 0123456789
                 </p>
             </Variant>
             <p className={classNames(styles.variantName, styles.paragraphSpacing)}>
