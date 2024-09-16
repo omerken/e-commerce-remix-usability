@@ -48,7 +48,7 @@ export default createBoard({
             <hr className={styles.hrLight} />
             <h4 className={styles.sectionHeader}>PARAGRAPH</h4>
 
-            <Variant name="Paragraph Font">
+            <Variant name="Large Paragraph">
                 <p className={classNames(styles.largeParagraph)}>Large text</p>
             </Variant>
             <p className={classNames(styles.variantName, styles.paragraphSpacing)}>
@@ -56,43 +56,43 @@ export default createBoard({
                 <span className={styles.fontDetails}> DM Sans (400)/ 52px/ 1.6</span>
             </p>
 
-            <Variant name="Medium Bold Paragraph">
-                <p className={styles.mediumBoldParagraph}>
+            <Variant name="Bold Paragraph">
+                <p className={styles.boldParagraph}>
                     We ignite opportunity by setting the world in motion. 0123456789
                 </p>
             </Variant>
             <p className={classNames(styles.variantName, styles.paragraphSpacing)}>
-                $medium-bold-paragraph:
+                $bold-paragraph:
                 <span className={styles.fontDetails}> DM Sans (1000) / 24px / 1.4</span>
             </p>
 
-            <Variant name="Medium Paragraph">
-                <p className={styles.mediumParagraph}>
+            <Variant name="Paragraph 1">
+                <p className={styles.paragraph1}>
                     We ignite opportunity by setting the world in motion. 0123456789
                 </p>
             </Variant>
             <p className={classNames(styles.variantName, styles.paragraphSpacing)}>
-                $medium-paragraph:
+                $paragraph1:
                 <span className={styles.fontDetails}> DM Sans (300) / 20px / 1.3</span>
             </p>
 
-            <Variant name="Small Paragraph">
-                <p className={styles.smallParagraph}>
+            <Variant name="Paragraph 2">
+                <p className={styles.paragraph2}>
                     We ignite opportunity by setting the world in motion. 0123456789
                 </p>
             </Variant>
             <p className={classNames(styles.variantName, styles.paragraphSpacing)}>
-                $small-paragraph:
+                $paragraph2:
                 <span className={styles.fontDetails}> DM Sans (200) / 16px / 1.4</span>
             </p>
 
-            <Variant name="Extra Small Paragraph">
-                <p className={styles.extraSmallParagraph}>
+            <Variant name="Paragraph 3">
+                <p className={styles.paragraph3}>
                     We ignite opportunity by setting the world in motion. 0123456789
                 </p>
             </Variant>
             <p className={classNames(styles.variantName, styles.paragraphSpacing)}>
-                $extra-small-paragraph:
+                $paragraph3:
                 <span className={styles.fontDetails}> DM Sans (400) / 12px / 18px</span>
             </p>
         </div>
