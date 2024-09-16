@@ -52,7 +52,7 @@ export default createBoard({
                 <p className={classNames(styles.largeParagraph)}>Large text</p>
             </Variant>
             <p className={classNames(styles.variantName, styles.paragraphSpacing)}>
-                $paragraph-font:
+                $large-paragraph:
                 <span className={styles.fontDetails}> DM Sans (400)/ 52px/ 1.6</span>
             </p>
 
