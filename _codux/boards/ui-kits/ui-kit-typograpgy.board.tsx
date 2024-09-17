@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import styles0 from './ui-kit-typograpgy.board.module.scss';
 
 export default createBoard({
-    name: 'UI Kit - Foundation',
+    name: 'UI Kit - Typography',
     Board: () => (
         <div className={styles.container}>
             <div>
