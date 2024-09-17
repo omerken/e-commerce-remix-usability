@@ -1,3 +1,5 @@
+@import '@styles/typography.scss';
+
 .root {
     display: flex;
     gap: 20px;
@@ -21,7 +23,7 @@
 
 .description {
     text-align: left;
-    font: var(--small-text);
+    font: var(--paragraph2);
 }
 
 .remove {

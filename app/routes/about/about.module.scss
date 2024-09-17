@@ -1,5 +1,7 @@
 @import '@styles/general.scss';
-
+@import '@styles/typography.scss';
+@import '@styles/colors.scss';
+    
 .root {
     display: flex;
     flex-direction: row;
@@ -14,6 +16,7 @@
 .paragraph {
     font: var(--medium-title);
     margin-bottom: 24px;
+    font: var(--paragraph1);
 }
 
 .text {
@@ -25,7 +28,7 @@
 }
 
 .title {
-    font: var(--extra-large-thin-title);
+    font: var(--heading1);
     letter-spacing: 6px;
     margin-bottom: 16px;
 }
