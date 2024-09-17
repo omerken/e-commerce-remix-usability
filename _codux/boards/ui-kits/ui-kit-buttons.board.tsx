@@ -28,18 +28,14 @@ export default createBoard({
                 <div className={classNames(styles.buttonsContainer, styles.itemSpacing)}>
                     <div>
                         <Variant name="Primary Button">
-                            <button className={classNames(commonStyles.primaryButton)}>
-                                Primary
-                            </button>
+                            <button className={classNames(commonStyles.primaryButton)}>Primary</button>
                         </Variant>
                         <span className={styles.buttonLabel}>Primary</span>
                     </div>
 
                     <div>
                         <Variant name="Secondary Button">
-                            <button className={classNames(commonStyles.secondaryButton)}>
-                                Secondary
-                            </button>
+                            <button className={classNames(commonStyles.secondaryButton)}>Secondary</button>
                         </Variant>
                         <span className={styles.buttonLabel}>Secondary</span>
                     </div>
@@ -48,16 +44,10 @@ export default createBoard({
                 <h4 className={styles.sectionHeader}>MENU</h4>
                 <Variant name="Menu">
                     <div className={classNames(styles.menu, styles.itemSpacing)}>
-                        <NavLink
-                            to="/"
-                            className={({ isActive }) => classNames({ [styles.active]: isActive })}
-                        >
+                        <NavLink to="/" className={({ isActive }) => classNames({ [styles.active]: isActive })}>
                             Home
                         </NavLink>
-                        <NavLink
-                            to="/about"
-                            className={({ isActive }) => classNames({ [styles.active]: isActive })}
-                        >
+                        <NavLink to="/about" className={({ isActive }) => classNames({ [styles.active]: isActive })}>
                             About
                         </NavLink>
                     </div>
@@ -103,8 +93,8 @@ export default createBoard({
     ),
     isSnippet: true,
     environmentProps: {
-        windowWidth: 331,
-        windowHeight: 525,
+        windowWidth: 321,
+        windowHeight: 462,
     },
     tags: ['UI Kit'],
 });
