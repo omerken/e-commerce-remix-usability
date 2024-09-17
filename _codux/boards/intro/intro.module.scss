@@ -19,14 +19,14 @@
     padding: 40px 100px;
     text-align: center;
     margin-bottom: 8px;
-    background-color: $charcoal-black;
+    background-color: var(--charcoal-black);
     text-wrap: pretty;
     letter-spacing: 10px;
     border-radius: 20px 20px 0 0;
 }
 
 .myParagraph {
-    color: $snow-white;
+    color: var(--snow-white);
     padding: 70px 120px;
     text-align: center;
     font: var(--paragraph1);

@@ -3,7 +3,7 @@
 @import '@styles/colors.scss';
 .root {
     position: relative;
-    color: $white;
+    color: var(--white);
 }
 
 .overlay {
