@@ -1,12 +1,7 @@
-import { products } from '@wix/stores';
-import { cart } from '@wix/ecom';
-import { EcomAPI } from '~/api/ecom-api-context-provider';
 import { faker } from '@faker-js/faker';
-
-type Product = Exclude<Awaited<ReturnType<EcomAPI['getProduct']>>, undefined>;
-type Media = Exclude<Exclude<Product['media'], undefined>['mainMedia'], undefined>;
-type Cart = Awaited<ReturnType<EcomAPI['getCart']>>;
-type CartTotals = Exclude<Awaited<ReturnType<EcomAPI['getCartTotals']>>, undefined>;
+import { cart, orders } from '@wix/ecom';
+import { products, collections } from '@wix/stores';
+import type { EcomAPI } from '~/api/ecom-api';
 
 export type FakeDataSettings = {
     numberOfCartItems?: number;
@@ -22,13 +17,13 @@ export type FakeDataSettings = {
 
 export function createProducts(
     settings?: FakeDataSettings
-): Awaited<ReturnType<EcomAPI['getAllProducts']>> {
+): Awaited<ReturnType<EcomAPI['getProductsByCategory']>> {
     return Array.from(new Array(settings?.numberOfProducts || 10)).map((id) =>
         createProduct(id, settings)
     );
 }
 
-export function createProduct(id?: string, settings?: FakeDataSettings): Product {
+export function createProduct(id?: string, settings?: FakeDataSettings): products.Product {
     const numOfImages = faker.number.int({ min: 2, max: 4 });
     const images = Array.from(new Array(numOfImages)).map(() => createImage());
     const mainImage = images[faker.number.int({ min: 0, max: numOfImages - 1 })];
@@ -71,7 +66,7 @@ export function createProduct(id?: string, settings?: FakeDataSettings): Product
     };
 }
 
-function createImage(): Media {
+function createImage(): products.MediaItem {
     const image = faker.image.dataUri();
 
     return {
@@ -84,7 +79,7 @@ function createImage(): Media {
     };
 }
 
-export function createCart(products: products.Product[]): Cart {
+export function createCart(products: products.Product[]): cart.Cart & cart.CartNonNullableFields {
     return {
         _id: faker.string.uuid(),
         currency: '$',
@@ -95,7 +90,9 @@ export function createCart(products: products.Product[]): Cart {
     };
 }
 
-export function createCartItem(product: products.Product): Cart['lineItems'][0] {
+export function createCartItem(
+    product: products.Product
+): cart.LineItem & cart.CartNonNullableFields['lineItems'][0] {
     return {
         _id: faker.string.uuid(),
         productName: {
@@ -108,6 +105,11 @@ export function createCartItem(product: products.Product): Cart['lineItems'][0] 
         price: createPrice(),
         descriptionLines: [],
         url: '',
+        couponScopes: [],
+        savePaymentMethod: false,
+        fixedQuantity: false,
+        priceUndetermined: false,
+        customLineItem: false,
     };
 }
 
@@ -123,7 +125,8 @@ function createPrice() {
     };
 }
 
-export function getCartTotals(): CartTotals {
+export function getCartTotals(): cart.EstimateTotalsResponse &
+    cart.EstimateTotalsResponseNonNullableFields {
     return {
         currency: '$',
         additionalFees: [],
@@ -134,5 +137,59 @@ export function getCartTotals(): CartTotals {
         priceSummary: {
             subtotal: createPrice(),
         },
+    };
+}
+
+export function createCategory(
+    settings?: FakeDataSettings
+): collections.Collection & collections.CollectionNonNullableFields {
+    return {
+        _id: faker.string.uuid(),
+        numberOfProducts: 1,
+        name: faker.lorem.words(),
+        description: faker.lorem.words(settings?.numberOfWordsInTitle || 2),
+        media: { items: [] },
+        slug: faker.lorem.words(),
+    };
+}
+
+export function createOrder(id: string): orders.Order & orders.OrderNonNullableFields {
+    return {
+        _id: id,
+        number: `${faker.number.int({ min: 1000, max: 9999 })}`,
+        appliedDiscounts: [],
+        attributionSource: orders.AttributionSource.UNSPECIFIED,
+        activities: [],
+        additionalFees: [],
+        customFields: [],
+        fulfillmentStatus: orders.FulfillmentStatus.NOT_FULFILLED,
+        isInternalOrderCreate: false,
+        status: orders.OrderStatus.APPROVED,
+        paymentStatus: orders.PaymentStatus.NOT_PAID,
+        taxIncludedInPrices: false,
+        weightUnit: orders.WeightUnit.UNSPECIFIED_WEIGHT_UNIT,
+        lineItems: [
+            {
+                _id: faker.string.uuid(),
+                quantity: 1,
+                paymentOption: orders.PaymentOptionType.FULL_PAYMENT_OFFLINE,
+                productName: {
+                    original: faker.lorem.paragraph(),
+                    translated: faker.lorem.paragraph(),
+                },
+                image: 'https://static.wixstatic.com/media/22e53e_efc1552d8050407f82ea158302d0debd~mv2.jpg/v1/fit/w_200,h_200,q_90/file.jpg',
+                locations: [],
+                descriptionLines: [
+                    {
+                        color: 'Black',
+                        name: {
+                            translated: 'Color',
+                            original: 'Color',
+                        },
+                        lineType: orders.DescriptionLineType.COLOR,
+                    },
+                ],
+            },
+        ],
     };
 }

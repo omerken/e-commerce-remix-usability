@@ -1,0 +1,59 @@
+@import '@styles/general.scss';
+
+.root {
+    display: grid;
+    gap: 12px;
+}
+
+.productInfo {
+    display: flex;
+    gap: 12px;
+}
+
+.productName {
+    font: var(--medium-title);
+    color: var(--black);
+    margin-bottom: 12px;
+}
+
+.productDetails {
+    display: flex;
+    flex-direction: column;
+    color: var(--grey);
+}
+
+.orderDetails {
+    margin-top: 3px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.quantity {
+    flex-grow: 2;
+}
+
+.subtotal {
+    flex-grow: 1;
+}
+
+@media (width < $desktop-width) {
+    .orderDetails {
+        flex-direction: column;
+        margin-left: 212px;
+        gap: 12px;
+    }
+}
+
+@media (width >= $desktop-width) {
+    .root {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .quantity {
+        text-align: center;
+    }
+
+    .subtotal {
+        text-align: right;
+    }
+}

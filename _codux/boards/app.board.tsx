@@ -1,13 +1,15 @@
-import { createBoard } from '@wixc3/react-board';
 import { createRemixStub } from '@remix-run/testing';
-import App, { ErrorBoundary as rootErrorBoundary } from 'app/root';
+import { createBoard } from '@wixc3/react-board';
+import App, { ErrorBoundary as rootErrorBoundary, loader as rootLoader } from 'app/root';
 import HomePage, { loader as homePageLoader } from 'app/routes/_index/route';
-import AboutPage from '~/page/about/route';
-import ProductsPage, { loader as productsPageLoader } from 'app/routes/products/route';
+import AboutPage from 'app/routes/about/route';
+import ProductsCategoryPage, {
+    loader as productsCategoryPageLoader,
+} from 'app/routes/category.$categorySlug/route';
 import ProductDetailsPage, {
-    loader as productDetailsPageLoader,
     ErrorBoundary as productDetailsErrorBoundary,
-} from 'app/routes/products_.$productId/route';
+    loader as productDetailsPageLoader,
+} from 'app/routes/products.$productSlug/route';
 import { ROUTES } from '~/router/config';
 import { sleep } from './utils';
 
@@ -16,6 +18,7 @@ const AppWrapper = createRemixStub([
         Component: () => {
             return <App />;
         },
+        loader: rootLoader,
         ErrorBoundary: rootErrorBoundary,
         children: [
             {
@@ -28,9 +31,9 @@ const AppWrapper = createRemixStub([
                 Component: AboutPage,
             },
             {
-                path: ROUTES.products.path,
-                Component: ProductsPage,
-                loader: productsPageLoader,
+                path: ROUTES.category.path,
+                Component: ProductsCategoryPage,
+                loader: productsCategoryPageLoader,
             },
             {
                 path: ROUTES.product.path,

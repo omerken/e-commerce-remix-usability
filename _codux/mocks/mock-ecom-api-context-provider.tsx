@@ -1,14 +1,17 @@
+import { faker } from '@faker-js/faker';
 import React, { FC, useMemo, useState } from 'react';
+import { SWRConfig } from 'swr';
+import type { EcomAPI } from '~/api/ecom-api';
+import { EcomAPIContext } from '~/api/ecom-api-context-provider';
 import {
-    createProducts,
-    createProduct,
     createCart,
+    createOrder,
+    createCategory,
+    createProduct,
+    createProducts,
     getCartTotals,
     FakeDataSettings as Settings,
 } from './fakers';
-import { EcomAPI, EcomAPIContext } from '~/api/ecom-api-context-provider';
-import { faker } from '@faker-js/faker';
-import { SWRConfig } from 'swr';
 
 export type FakeDataSettings = Settings;
 
@@ -17,7 +20,7 @@ function getEcomApi(settings?: Settings): EcomAPI {
     const products = createProducts(settings);
 
     const api: EcomAPI = {
-        getAllProducts: async () => {
+        getProductsByCategory: async () => {
             return Promise.resolve(products);
         },
         getProduct: async (id: string | undefined) => {
@@ -54,6 +57,15 @@ function getEcomApi(settings?: Settings): EcomAPI {
         checkout: () => {
             alert('Checkout');
             return Promise.resolve({ success: true, url: '' });
+        },
+        getAllCategories: () => {
+            return Promise.resolve([createCategory(settings)]);
+        },
+        getCategoryBySlug: () => {
+            return Promise.resolve(createCategory(settings));
+        },
+        getOrder: (id: string) => {
+            return Promise.resolve(createOrder(id));
         },
     };
 

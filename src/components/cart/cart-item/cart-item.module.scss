@@ -1,5 +1,3 @@
-@import '@styles/theme.module.scss';
-
 .root {
     display: flex;
     gap: 20px;
@@ -23,21 +21,20 @@
 
 .description {
     text-align: left;
-    font: $small-text;
+    font: var(--small-text);
 }
 
 .remove {
     cursor: pointer;
     margin-left: 6px;
-    margin-top: 4px;
 }
 
 .actionsContainer {
     display: flex;
 }
 
-.item-line {
+.itemLine {
     display: flex;
     justify-content: space-between;
-    padding-top: 4px;
+    align-items: flex-start;
 }

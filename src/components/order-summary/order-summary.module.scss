@@ -1,0 +1,111 @@
+@import '@styles/general.scss';
+
+.root {
+    display: grid;
+    gap: 48px;
+}
+
+.section {
+    padding: 24px;
+    border: solid 1px var(--grey);
+}
+
+.lineItems {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.divider {
+    border-top: solid 1px var(--grey);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.summaryWrapper {
+    display: grid;
+}
+
+.noteWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.noteTitle {
+    font: var(--small-title);
+    color: var(--charcoal-black);
+}
+
+.noteValue {
+    color: var(--grey);
+}
+
+.priceDetails {
+    display: flex;
+    flex-direction: column;
+}
+
+.priceItems {
+    font: var(--small-title);
+    color: var(--charcoal-black);
+
+    display: grid;
+    grid-template-columns: 1fr auto;
+    row-gap: 12px;
+}
+
+.priceValue {
+    text-align: right;
+}
+
+.totalPrice {
+    font: var(--medium-bold-title);
+}
+
+.deliveryBilling {
+    color: var(--charcoal-black);
+    display: grid;
+    gap: 48px;
+}
+
+.deliveryBilling .title {
+    font: var(--medium-bold-title);
+    margin-bottom: 12px;
+}
+
+.addressLines {
+    color: var(--charcoal-black);
+    font-weight: normal;
+}
+
+.deliveryTime {
+    margin-top: 12px;
+}
+
+@media (width < $desktop-width) {
+    .root {
+        padding: 24px;
+    }
+
+    .lineItemsSection {
+        border-left: 0;
+        border-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media (width >= $desktop-width) {
+    .summaryWrapper {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .buyerNoteSeparator {
+        display: none;
+    }
+
+    .deliveryBilling {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}

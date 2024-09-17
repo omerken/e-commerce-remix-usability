@@ -1,0 +1,58 @@
+@import '@styles/general.scss';
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--white);
+    border-radius: 10px;
+    display: grid;
+    justify-content: center;
+    width: 1000px;
+}
+
+.myStyle {
+    font: var(--medium-paragraph);
+    color: var(--snow-white);
+    padding: 40px 100px;
+    text-align: center;
+    margin-bottom: 8px;
+    background-color: var(--charcoal-black);
+    text-wrap: pretty;
+    letter-spacing: 10px;
+    border-radius: 20px 20px 0 0;
+}
+
+.myParagraph {
+    color: var(--snow-white);
+    padding: 70px 120px;
+    text-align: center;
+    font: var(--medium-paragraph);
+    background-color: var(--charcoal-black);
+    text-wrap: pretty;
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    align-items: center;
+    border-radius: 0 0 20px 20px;
+}
+
+@media (width <= $tablet-width) {
+    .container {
+        width: 100vw;
+        margin-top: unset;
+    }
+
+    .myStyle,
+    .myParagraph {
+        padding: 50px 40px;
+    }
+}
+
+@media (width <= $mobile-width) {
+    .myStyle,
+    .myParagraph {
+        font-size: 20px;
+    }
+}

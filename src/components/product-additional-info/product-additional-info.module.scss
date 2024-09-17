@@ -1,18 +1,16 @@
-@import '@styles/theme.module.scss';
-
 .root {
     padding-top: 10px;
     text-wrap: pretty;
 }
 
-.info-title {
+.infoTitle {
     margin-top: 10px;
-    font: $extra-small-title;
+    font: var(--extra-small-title);
     box-shadow: inset 0 -1px black;
 }
 
-.info-prgrp {
-    font: $extra-small-text;
+.infoDescription {
+    font: var(--extra-small-text);
     margin-top: 8px;
     margin-bottom: 8px;
 }

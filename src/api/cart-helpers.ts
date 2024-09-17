@@ -1,7 +1,7 @@
-import { Cart } from './ecom-api-context-provider';
+import { cart } from '@wix/ecom';
 
 export function findItemIdInCart(
-    cart: Cart,
+    cart: cart.Cart & cart.CartNonNullableFields,
     catalogItemId: string,
     options?: Record<string, string>
 ) {
@@ -18,11 +18,11 @@ export function findItemIdInCart(
         if (!options || !catalogOptions) {
             return true;
         }
-        Object.keys(options).forEach((key) => {
-            if (options![key] !== catalogOptions[key]) {
+        for (const optionName of Object.keys(options)) {
+            if (options[optionName] !== catalogOptions[optionName]) {
                 return false;
             }
-        });
+        }
         return true;
     });
 }

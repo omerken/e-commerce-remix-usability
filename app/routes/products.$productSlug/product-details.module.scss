@@ -1,0 +1,51 @@
+@import '@styles/general.scss';
+
+.root {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    column-gap: 2em;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-top: 30px;
+    padding-bottom: 60px;
+}
+
+.media {
+    flex: 2;
+}
+
+.productInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.productName {
+    text-transform: uppercase;
+}
+
+.sku {
+    font: var(--extra-small-text);
+}
+
+.description {
+    font: var(--extra-small-text);
+}
+
+.quantity input {
+    margin-top: 13px;
+}
+
+.addToCartBtn {
+    width: 140px;
+    height: 40px;
+}
+
+@media (width <= $mobile-width) {
+    .root {
+        flex-direction: column;
+        align-items: center;
+    }
+}

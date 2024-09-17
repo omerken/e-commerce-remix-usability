@@ -1,77 +1,66 @@
-@import './theme.module.scss';
-
-.intro-button {
+.introButton {
     text-align: center;
-    font: $small-text;
-    background-color: $snow-white;
+    font: var(--small-text);
+    background-color: var(--snow-white);
     padding: 10px;
     width: 160px;
-    color: $charcoal-black;
+    color: var(--charcoal-black);
     border-radius: 30px;
     margin-top: 20px;
     cursor: pointer;
-    &:hover {
-        background-color: #b6c1f0;
-        color: $black;
-    }
+}
+
+.introButton:hover {
+    background-color: #b6c1f0;
+    color: var(--black);
 }
 
 .primaryButton {
-    background-color: $charcoal-black;
+    background-color: var(--charcoal-black);
     display: flex;
     align-items: center;
-    font: $small-text;
-    color: $snow-white;
+    font: var(--small-text);
+    color: var(--snow-white);
     border-radius: 35px;
     height: 42px;
     padding-left: 22px;
     padding-right: 22px;
-    border: 1px solid $charcoal-black;
+    border: 1px solid var(--charcoal-black);
     z-index: 1;
-
-    &:hover {
-        background-color: $white;
-        border: 1px solid $charcoal-black;
-        color: $charcoal-black;
-        cursor: pointer;
-    }
 }
 
-.secondaryButton {
+.primaryButton:hover {
+    background-color: var(--white);
+    border: 1px solid var(--charcoal-black);
+    color: var(--charcoal-black);
+    cursor: pointer;
+}
+
+.linkButton {
     height: 42px;
     display: flex;
     align-items: center;
-    font: $small-text;
-    border: 1px solid transparent;
+    font: var(--small-text);
     cursor: pointer;
-    padding-right: 22px;
-    padding-left: 22px;
-    border: 1px solid white;
     z-index: 1;
+}
 
-    &:hover {
-        background-color: $white;
-        border: 1px solid black;
-        border-radius: 35px;
-    }
+.linkButton:hover {
+    color: var(--grey);
+    text-decoration: underline;
 }
 
 .numberInput {
-    border: 1px solid $black;
+    border: 1px solid var(--black);
     border-radius: 5px;
     padding-left: 10px;
     height: 25px;
     width: 60px;
     padding-right: 10px;
-    font: $extra-small-text;
-}
-
-.price {
-    font-weight: 700;
-    margin-top: 2px;
+    font: var(--extra-small-text);
 }
 
 .loading {
     padding: 30px;
-    font: $extra-large-text;
+    font: var(--extra-large-text);
 }

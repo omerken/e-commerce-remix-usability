@@ -1,0 +1,13 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.title {
+    text-transform: uppercase;
+}
+
+.error {
+    color: var(--red);
+}

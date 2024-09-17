@@ -1,4 +1,4 @@
-@import '@styles/theme.module.scss';
+@import '@styles/general.scss';
 
 .root {
     cursor: pointer;
@@ -18,22 +18,23 @@
 
 .description {
     text-align: left;
-    font: $medium-title;
+    font: var(--medium-title);
 }
 
 // --- MEDIA QUERIES ---
 
-@media (430px <=width < 980px) {
+@media ($mobile-width <= width < $tablet-width) {
     .cardContent {
         font-size: 24px;
     }
 }
 
-@media (width < 430px) {
+@media (width < $mobile-width) {
     .root {
         padding-left: 24px;
         padding-right: 24px;
     }
+
     .cardContent {
         font-size: 24px;
     }

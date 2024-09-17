@@ -1,11 +1,11 @@
-@import '@styles/theme.module.scss';
+@import '@styles/general.scss';
 
 .root {
     padding-bottom: 90px;
 }
 
-.top-label-highlighted {
-    color: $white;
+.topLabelHighlighted {
+    color: var(--white);
     padding: 0 5px;
     display: inline-block;
     margin-bottom: 5%;
@@ -25,20 +25,20 @@
 }
 
 .bestSeller {
-    font: $large-paragraph;
+    font: var(--large-paragraph);
     margin-bottom: 40px;
     text-align: center;
 }
 
-.hero-title {
+.heroTitle {
+    font: var(--extra-large-thin-title);
     margin-top: 80px;
-    font: $extra-large-thin-title;
     text-align: center;
 }
 
 // --- MEDIA QUERIES ---
 
-@media (430px < width < 980px) {
+@media ($mobile-width < width < $tablet-width) {
     .cardsLayout {
         column-gap: 4vw;
     }
@@ -48,11 +48,11 @@
     }
 
     .bestSeller {
-        font: $medium-paragraph-bold;
+        font: var(--medium-paragraph-bold);
     }
 }
 
-@media (width <= 430px) {
+@media (width <= $mobile-width) {
     .cardsLayout {
         column-gap: 20px;
     }
@@ -62,7 +62,7 @@
     }
 
     .bestSeller {
-        font: $large-title-mobile;
+        font: var(--large-title-mobile);
         margin-bottom: 40px;
     }
 }

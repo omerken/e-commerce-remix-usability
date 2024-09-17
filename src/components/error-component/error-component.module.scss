@@ -4,3 +4,17 @@
     justify-content: center;
     align-items: center;
 }
+
+.title {
+    font: var(--medium-bold-title);
+}
+
+.message {
+    margin-top: 12px;
+    font: var(--small-text);
+    max-width: 75vw;
+}
+
+.actionButton {
+    margin-top: 24px;
+}
