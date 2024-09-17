@@ -1,5 +1,3 @@
-@import '@styles/typography.scss';
-
 .container {
     display: flex;
     flex-direction: column;
@@ -12,5 +10,5 @@
 }
 
 .currentPrice {
-    font: $bold-paragraph;
+    font: var(--bold-paragraph);
 }

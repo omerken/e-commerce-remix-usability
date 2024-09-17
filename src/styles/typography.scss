@@ -1,19 +1,27 @@
-//fonts
-$my-prettyfont: 'DM Sans', sans-serif;
+:root {
+    //fonts
+    --my-pretty-font: 'DM Sans', sans-serif;
 
-//titles
-$heading1: 100 65px/1.2 $my-prettyfont;
-$heading2: 200 45px/1.4 $my-prettyfont;
-$heading3: 900 42px/1.4 $my-prettyfont;
-$heading6: 700 16px/1.4 $my-prettyfont;
+    //titles
+    --heading1: 100 65px/1.2 'DM Sans', sans-serif;
+    --heading2: 200 45px/1.4 'DM Sans', sans-serif;
+    --heading3: 900 42px/1.4 'DM Sans', sans-serif;
+    --heading6: 700 16px/1.4 'DM Sans', sans-serif;
 
-//paragraph
-$large-paragraph: 400 52px/1.6 $my-prettyfont;
-$bold-paragraph: 700 24px/ 1.4 $my-prettyfont;
-$paragraph1: 300 20px/ 1.4 $my-prettyfont;
-$paragraph2: 200 16px/ 1.4 $my-prettyfont;
-$paragraph3: 400 12px/1.45 $my-prettyfont;
+    //paragraph
+    --large-paragraph: 400 52px/1.6 'DM Sans', sans-serif;
+    --bold-paragraph: 700 24px/1.4 'DM Sans', sans-serif;
+    --paragraph1: 300 20px/1.4 'DM Sans', sans-serif;
+    --paragraph2: 200 16px/1.4 'DM Sans', sans-serif;
+    --paragraph3: 400 12px/1.45 'DM Sans', sans-serif;
 
-//buttons
-$button-font: 400 1rem/1.3 $my-prettyfont;
+    //text
+    --extra-large-text: 400 60px/1.4 'DM Sans', sans-serif;
+    --small-text: 400 16px/1.4 'DM Sans', sans-serif;
+    --extra-small-text: 400 12px/1.45 'DM Sans', sans-serif;
+    
+    //buttons
+    $button-font: 400 1rem/1.3 'DM Sans', sans-serif;
+}
+
 

@@ -27,15 +27,15 @@
 }
 
 .hpParagraph {
-    font: $large-paragraph;
+    font: var(--large-paragraph);
     margin-bottom: 40px;
     text-align: center;
 }
 
 .heroTitle {
-    font: $heading1;
+    font: var(--heading1);
     margin-top: 80px;
-    font: $heading1;
+    font: var(--heading1);
     text-align: center;
 }
 
@@ -51,7 +51,7 @@
     }
 
     .hpParagraph {
-        font: $heading3;
+        font: var(--heading3);
     }
 }
 
@@ -65,7 +65,7 @@
     }
 
     .hpParagraph {
-        font: $heading3;
+        font: var(--heading3);
         margin-bottom: 40px;
     }
 }

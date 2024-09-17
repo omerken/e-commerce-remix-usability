@@ -1,5 +1,3 @@
-@import '@styles/colors.scss';
-
 .container {
     font-family: Wix Madefor Text;
     width: 284px;
@@ -62,7 +60,7 @@
 }
 
 .active {
-    color: $black;
+    color: var(--black);
     font-weight: bold;
 }
 
