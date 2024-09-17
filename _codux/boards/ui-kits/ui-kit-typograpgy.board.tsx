@@ -39,7 +39,7 @@ export default createBoard({
                 <h6 className={classNames(styles.heading6)}>Heading 6</h6>
             </Variant>
             <p className={classNames(styles.variantName, styles.headlinesSpacing)}>
-                --heading6:<span className={styles.fontDetails}> DM Sans (400)/ 16px/ 1.4 </span>
+                --heading6:<span className={styles.fontDetails}> DM Sans (700)/ 16px/ 1.4 </span>
             </p>
 
             <hr className={styles.hrLight} />
