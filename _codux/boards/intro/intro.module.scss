@@ -26,7 +26,7 @@
 }
 
 .myParagraph {
-    color: $snow-white;
+    color: var(--snow-white);
     padding: 70px 120px;
     text-align: center;
     font: var(--paragraph1);
