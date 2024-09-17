@@ -1,4 +1,3 @@
-@import '@styles/theme.module.scss';
 
 .container {
     font-family: Wix Madefor Text;
@@ -71,37 +70,37 @@
 }
 
 .heading1 {
-    font: $heading1;
+    font: var(--heading1);
 }
 
 .heading2 {
-    font: $heading2;
+    font: var(--heading2);
 }
 
 .heading3 {
-    font: $heading3;
+    font: var(--heading3);
 }
 
 .heading6 {
-    font: $heading6;
+    font: var(--heading6);
 }
 
 .largeParagraph {
-    font: $large-paragraph;
+    font: var(--large-paragraph);
 }
 
 .boldParagraph {
-    font: $bold-paragraph;
+    font: var(--bold-paragraph);
 }
 
 .paragraph1 {
-    font: $paragraph1;
+    font: var(--paragraph1);
 }
 
 .paragraph2 {
-    font: $paragraph2;
+    font: var(--paragraph2);
 }
 
 .paragraph3 {
-    font: $paragraph3;
+    font: var(--paragraph3);
 }

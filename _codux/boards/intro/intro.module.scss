@@ -13,8 +13,8 @@
 }
 
 .myStyle {
-    font: $paragraph1;
-    color: $snow-white;
+    font: var(--paragraph1);
+    color: var(--snow-white);
     padding: 40px 100px;
     text-align: center;
     margin-bottom: 8px;
@@ -28,8 +28,8 @@
     color: var(--snow-white);
     padding: 70px 120px;
     text-align: center;
-    font: $paragraph1;
-    background-color: $charcoal-black;
+    font: var(--paragraph1);
+    background-color: var(--charcoal-black);
     text-wrap: pretty;
     display: flex;
     flex-direction: column;

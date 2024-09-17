@@ -27,11 +27,11 @@
 }
 
 .sku {
-    font: $paragraph3;
+    font: var(--paragraph3);
 }
 
 .description {
-    font: $paragraph3;
+    font: var(--paragraph3);
 }
 
 .quantity input {

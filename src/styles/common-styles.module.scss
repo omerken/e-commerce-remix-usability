@@ -2,8 +2,8 @@
 
 .introButton {
     text-align: center;
-    font: $heading6;
-    background-color: $snow-white;
+    font: var(--heading6);
+    background-color: var(--snow-white);
     padding: 10px;
     width: 160px;
     color: var(--charcoal-black);
@@ -21,8 +21,8 @@
     background-color: var(--charcoal-black);
     display: flex;
     align-items: center;
-    font: $button-font;
-    color: $snow-white;
+    font: var(--button-font);
+    color: var(--snow-white);
     border-radius: 35px;
     height: 42px;
     padding-left: 22px;
@@ -34,21 +34,21 @@
 .secondaryButton {
     height: 42px;
     display: flex;
-    color: $charcoal-black;
+    color: var(--charcoal-black);
     align-items: center;
-    font: $button-font;
+    font: var(--button-font);
     cursor: pointer;
     padding-right: 22px;
     padding-left: 22px;
     border: 1px solid white;
     z-index: 1;
-    background-color: $white;
-    border: 1px solid $charcoal-black;
+    background-color: var(--white);
+    border: 1px solid var(--charcoal-black);
     border-radius: 35px;
     &:hover {
         background-color: #7fc2f4;
         border:1px solid #7fc2f4;
-        color: $white;
+        color: var(--white);
     }
 }
 
@@ -58,11 +58,11 @@
     align-items: center;
     cursor: pointer;
     z-index: 1;
+}
 
-    &:hover {
-        color: $grey;
-        text-decoration: underline;
-    }
+.linkButton:hover {
+    color: var(--grey);
+    text-decoration: underline;
 }
 
 .numberInput {
@@ -72,5 +72,5 @@
     height: 25px;
     width: 60px;
     padding-right: 10px;
-    font: $paragraph3;
+    font: var(--paragraph3);
 }

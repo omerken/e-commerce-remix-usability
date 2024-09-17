@@ -5,12 +5,12 @@
 
 .infoTitle {
     margin-top: 10px;
-    font: $heading6;
+    font: var(--heading6);
     box-shadow: inset 0 -1px black;
 }
 
 .infoDescription {
-    font: $paragraph3;
+    font: var(--paragraph3);
     margin-top: 8px;
     margin-bottom: 8px;
 }

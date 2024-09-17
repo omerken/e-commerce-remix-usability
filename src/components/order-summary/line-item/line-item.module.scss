@@ -11,8 +11,8 @@
 }
 
 .productName {
-    font: $paragraph1;
-    color: $black;
+    font: var(--paragraph1);
+    color: var(--black);
     margin-bottom: 12px;
 }
 

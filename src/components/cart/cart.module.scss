@@ -8,7 +8,7 @@
 }
 
 .emptyCart {
-    font: $heading1;
+    font: var(--heading1);
     text-align: center;
     display: flex;
     align-items: center;
