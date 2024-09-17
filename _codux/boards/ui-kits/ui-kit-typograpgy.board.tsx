@@ -1,6 +1,7 @@
 import { createBoard, Variant } from '@wixc3/react-board';
 import styles from '../../../src/styles/ui-kit-typography.module.scss';
 import classNames from 'classnames';
+import styles0 from './ui-kit-typograpgy.board.module.scss';
 
 export default createBoard({
     name: 'UI Kit - Foundation',
@@ -25,14 +26,14 @@ export default createBoard({
                 <h2 className={classNames(styles.heading2)}>HEADING 2</h2>
             </Variant>
             <p className={classNames(styles.variantName, styles.headlinesSpacing)}>
-                --heading2:<span className={styles.fontDetails}> DM Sans (200) / 45px / 1.4</span>
+                --heading2:<span className={styles.fontDetails}> DM Sans (200) / 45px / 1.2</span>
             </p>
 
             <Variant name="Heading 3">
                 <h3 className={classNames(styles.heading3)}>Heading 3</h3>
             </Variant>
             <p className={classNames(styles.variantName, styles.headlinesSpacing)}>
-                --heading3:<span className={styles.fontDetails}> DM Sans (900)/ 42px/ 1.4 </span>
+                --heading3:<span className={styles.fontDetails}> DM Sans (900)/ 42px/ 1</span>
             </p>
 
             <Variant name="Heading 6">
@@ -43,7 +44,7 @@ export default createBoard({
             </p>
 
             <hr className={styles.hrLight} />
-            <h4 className={styles.sectionHeader}>PARAGRAPH</h4>
+            <h4 className={classNames(styles.sectionHeader)}>PARAGRAPH</h4>
 
             <Variant name="Large Paragraph">
                 <p className={classNames(styles.largeParagraph)}>Large text</p>
