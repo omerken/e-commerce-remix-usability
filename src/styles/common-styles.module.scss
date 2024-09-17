@@ -22,6 +22,7 @@
 .primaryButton {
     background-color: var(--charcoal-black);
     display: flex;
+    cursor: pointer;
     align-items: center;
     font: var(--button-font);
     color: var(--snow-white);
@@ -31,6 +32,11 @@
     padding-right: 22px;
     border: 1px solid var(--charcoal-black);
     z-index: 1;
+}
+.primaryButton:hover {
+    background-color: var(--white);
+    border: 1px solid var(--charcoal-black);	   
+    color: var(--charcoal-black);
 }
 
 .secondaryButton {
