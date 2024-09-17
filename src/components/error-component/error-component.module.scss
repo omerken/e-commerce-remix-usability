@@ -8,12 +8,12 @@
 }
 
 .title {
-    font: $heading2;
+    font: var(--heading2);
 }
 
 .message {
     margin-top: 12px;
-    font: $heading6;
+    font: var(--heading6);
     max-width: 75vw;
 }
 

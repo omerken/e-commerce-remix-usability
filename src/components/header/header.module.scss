@@ -6,7 +6,7 @@
     justify-content: space-between;
     align-items: center;
     height: 64px;
-    font: $paragraph2;
+    font: var(--paragraph2);
     padding: 0 20px;
 }
 
@@ -18,7 +18,7 @@
 .menuButton {
     padding-right: 22px;
     padding-left: 22px;
-    font: $button-font
+    font: var(--button-font);
 }
 
 .activeMenuItem {

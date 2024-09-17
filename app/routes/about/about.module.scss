@@ -16,7 +16,7 @@
 .paragraph {
     font: var(--medium-title);
     margin-bottom: 24px;
-    font: $paragraph1;
+    font: var(--paragraph1);
 }
 
 .text {
@@ -28,7 +28,7 @@
 }
 
 .title {
-    font: $heading1;
+    font: var(--heading1);
     letter-spacing: 6px;
     margin-bottom: 16px;
 }
