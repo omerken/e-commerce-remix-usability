@@ -1,3 +1,7 @@
+@import '@styles/general.scss';
+@import '@styles/typography.scss';
+@import '@styles/colors.scss';
+
 .cart {
     background-color: var(--white);
     padding: 15px 10px 10px;
@@ -8,7 +12,7 @@
 }
 
 .emptyCart {
-    font: var(--large-thin-title);
+    font: var(--heading1);
     text-align: center;
     display: flex;
     align-items: center;

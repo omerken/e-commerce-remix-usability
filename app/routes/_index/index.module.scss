@@ -24,15 +24,16 @@
     width: 20vw;
 }
 
-.bestSeller {
+.hpParagraph {
     font: var(--large-paragraph);
     margin-bottom: 40px;
     text-align: center;
 }
 
 .heroTitle {
-    font: var(--extra-large-thin-title);
+    font: var(--heading1);
     margin-top: 80px;
+    font: var(--heading1);
     text-align: center;
 }
 
@@ -47,8 +48,8 @@
         width: 40vw;
     }
 
-    .bestSeller {
-        font: var(--medium-paragraph-bold);
+    .hpParagraph {
+        font: var(--heading3);
     }
 }
 
@@ -61,8 +62,8 @@
         width: 90vw;
     }
 
-    .bestSeller {
-        font: var(--large-title-mobile);
+    .hpParagraph {
+        font: var(--heading3);
         margin-bottom: 40px;
     }
 }
