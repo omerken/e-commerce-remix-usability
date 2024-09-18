@@ -1,6 +1,5 @@
 import type { LinksFunction, LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
 import { isRouteErrorResponse, json, useLoaderData, useNavigate, useRouteError } from '@remix-run/react';
-import { products } from '@wix/stores';
 import classNames from 'classnames';
 import { useRef, useState } from 'react';
 import { useAddToCart } from '~/api/api-hooks';
@@ -13,11 +12,11 @@ import { ProductImages } from '~/components/product-images/product-images';
 import { ProductOption } from '~/components/product-option/product-option';
 import { UnsafeRichText } from '~/components/rich-text/rich-text';
 import { getChoiceValue } from '~/components/product-option/product-option-utils';
-import commonStyles from '~/styles/common-styles.module.scss';
 import { ROUTES } from '~/router/config';
-import { getUrlOriginWithPath } from '~/utils';
-import styles from './product-details.module.scss';
+import { getUrlOriginWithPath, isOutOfStock } from '~/utils';
 import { EcomApiErrorCodes } from '~/api/types';
+import commonStyles from '~/styles/common-styles.module.scss';
+import styles from './product-details.module.scss';
 
 export const loader = async ({ params, request }: LoaderFunctionArgs) => {
     const productSlug = params.productSlug;
@@ -40,12 +39,26 @@ export default function ProductDetailsPage() {
     const { trigger: addToCart } = useAddToCart();
     const quantityInput = useRef<HTMLInputElement>(null);
 
+    const getInitialSelectedOptions = () => {
+        const result: Record<string, string | undefined> = {};
+        for (const option of product.productOptions ?? []) {
+            if (option.name) {
+                const initialChoice = option?.choices?.length === 1 ? option.choices[0] : undefined;
+                result[option.name] = getChoiceValue(option, initialChoice);
+            }
+        }
+
+        return result;
+    };
+
     const [selectedOptions, setSelectedOptions] = useState<Record<string, string | undefined>>(
-        getInitialSelectedOptions(product.productOptions)
+        getInitialSelectedOptions()
     );
 
+    const outOfStock = isOutOfStock(product, selectedOptions);
+
     async function addToCartHandler() {
-        if (!product?._id) {
+        if (!product?._id || outOfStock) {
             return;
         }
 
@@ -87,24 +100,28 @@ export default function ProductDetailsPage() {
                     <UnsafeRichText className={styles.description}>{product.description}</UnsafeRichText>
                 )}
 
-                {product.productOptions?.map((option) => (
-                    <ProductOption
-                        key={option.name}
-                        error={
-                            addToCartAttempted && selectedOptions[option.name!] === undefined
-                                ? `Select ${option.name}`
-                                : undefined
-                        }
-                        option={option}
-                        selectedValue={selectedOptions[option.name!]}
-                        onChange={(value) =>
-                            setSelectedOptions((prev) => ({
-                                ...prev,
-                                [option.name!]: value,
-                            }))
-                        }
-                    />
-                ))}
+                {product.productOptions && product.productOptions.length > 0 && (
+                    <div className={styles.productOptions}>
+                        {product.productOptions?.map((option) => (
+                            <ProductOption
+                                key={option.name}
+                                error={
+                                    addToCartAttempted && selectedOptions[option.name!] === undefined
+                                        ? `Select ${option.name}`
+                                        : undefined
+                                }
+                                option={option}
+                                selectedValue={selectedOptions[option.name!]}
+                                onChange={(value) => {
+                                    setSelectedOptions((prev) => ({
+                                        ...prev,
+                                        [option.name!]: value,
+                                    }));
+                                }}
+                            />
+                        ))}
+                    </div>
+                )}
 
                 <div className={styles.quantity}>
                     <label>
@@ -121,9 +138,11 @@ export default function ProductDetailsPage() {
                 </div>
 
                 <div>
+                    {outOfStock && <div className={styles.outOfStockMessage}>Item is out of stock</div>}
                     <button
                         onClick={addToCartHandler}
                         className={classNames(commonStyles.primaryButton, styles.addToCartBtn)}
+                        disabled={outOfStock}
                     >
                         Add to Cart
                     </button>
@@ -227,15 +246,3 @@ export const links: LinksFunction = () => {
         },
     ];
 };
-
-function getInitialSelectedOptions(productOptions: products.ProductOption[] | undefined) {
-    const result: Record<string, string | undefined> = {};
-    for (const option of productOptions ?? []) {
-        if (option.name) {
-            const initialChoice = option?.choices?.length === 1 ? option.choices[0] : undefined;
-            result[option.name] = getChoiceValue(option, initialChoice);
-        }
-    }
-
-    return result;
-}
