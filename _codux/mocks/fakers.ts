@@ -77,11 +77,11 @@ function createImage(): products.MediaItem {
     };
 }
 
-export function createCart(products: Product[]): Cart {
+export function createCart(items: products.Product[]): cart.Cart & cart.CartNonNullableFields {
     return {
         _id: faker.string.uuid(),
         currency: '$',
-        lineItems: products.map(createCartItem),
+        lineItems: items.map(createCartItem),
         appliedDiscounts: [],
         conversionCurrency: 'USD',
         weightUnit: cart.WeightUnit.KG,
