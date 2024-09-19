@@ -1,5 +1,6 @@
 import { currentCart, orders } from '@wix/ecom';
 import { redirects } from '@wix/redirects';
+import { members } from '@wix/members';
 import { OAuthStrategy, createClient } from '@wix/sdk';
 import { products, collections } from '@wix/stores';
 import Cookies from 'js-cookie';
@@ -10,7 +11,7 @@ import {
     WIX_STORES_APP_ID,
 } from './constants';
 
-function getWixClientId() {
+export function getWixClientId() {
     /**
      * this file is used on both sides: client and server,
      * so we are trying to read WIX_CLIENT_ID from process.env on server side
@@ -23,11 +24,16 @@ function getWixClientId() {
             ? process.env
             : {};
 
-    return env.WIX_CLIENT_ID ?? DEMO_STORE_WIX_CLIENT_ID;
+    const result = env.WIX_CLIENT_ID ?? DEMO_STORE_WIX_CLIENT_ID;
+
+    console.log(result);
+
+    return result;
 }
 
 function getTokensClient() {
-    const tokens = Cookies.get(WIX_SESSION_TOKEN_COOKIE_KEY);
+    const tokens =
+        Cookies.get(WIX_SESSION_TOKEN_COOKIE_KEY) ?? '{"accessToken": {}, "refreshToken": {}}';
     return tokens ? JSON.parse(tokens) : undefined;
 }
 
@@ -39,6 +45,7 @@ function getWixClient() {
             redirects,
             collections,
             orders,
+            members,
         },
         auth: OAuthStrategy({
             clientId: getWixClientId(),
@@ -135,6 +142,60 @@ function createApi() {
         },
         getOrder: async (id: string) => {
             return await wixClient.orders.getOrder(id);
+        },
+        getOrders: async () => {
+            return wixClient.orders.searchOrders();
+        },
+        getUser: () => {
+            return wixClient.members.getCurrentMember();
+        },
+        logout: () => {
+            wixClient.auth.logout(window.location.href).then(() => {
+                Cookies.remove(WIX_SESSION_TOKEN_COOKIE_KEY);
+            });
+        },
+        isLoggedIn: () => {
+            return wixClient.auth.loggedIn();
+        },
+        handleLoginCallback: async (url: string, c: Cookies.CookiesStatic<string>) => {
+            const returnedOAuthData = wixClient.auth.parseFromUrl(url);
+            if (returnedOAuthData.error) {
+                alert(`Error: ${returnedOAuthData.errorDescription}`);
+                return;
+            }
+
+            const oAuthData = JSON.parse(c.get('loginRequestData') ?? '');
+            c.remove('loginRequestData');
+
+            const memberTokens = await wixClient.auth.getMemberTokens(
+                returnedOAuthData.code,
+                returnedOAuthData.state,
+                oAuthData
+            );
+
+            wixClient.auth.setTokens(memberTokens);
+            c.set(
+                WIX_SESSION_TOKEN_COOKIE_KEY,
+                JSON.stringify({
+                    accessToken: memberTokens.accessToken,
+                    refreshToken: memberTokens.refreshToken,
+                })
+            );
+        },
+        login: async () => {
+            const origin = new URL(window.location.href).origin;
+
+            const loginRequestData = wixClient.auth.generateOAuthData(
+                `${origin}/login-callback`,
+                //`https://olehr1.wixsite.com/codux-89/login-callback`,
+                window.location.href
+            );
+
+            Cookies.set('loginRequestData', JSON.stringify(loginRequestData));
+            const { authUrl } = await wixClient.auth.getAuthUrl(loginRequestData, {
+                responseMode: 'query',
+            });
+            window.location.href = authUrl;
         },
     };
 }

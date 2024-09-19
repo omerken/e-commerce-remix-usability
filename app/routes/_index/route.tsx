@@ -1,15 +1,22 @@
 import { LinksFunction, LoaderFunctionArgs } from '@remix-run/node';
 import { Link, MetaFunction, useLoaderData, useNavigate } from '@remix-run/react';
+import { useEffect, useState } from 'react';
 import { getEcomApi } from '~/api/ecom-api';
+import { members } from '@wix/members';
 import { HeroImage } from '~/components/hero-image/hero-image';
 import { ProductCard } from '~/components/product-card/product-card';
 import { ROUTES } from '~/router/config';
+import commonStyles from '~/styles/common-styles.module.scss';
 import { getUrlOriginWithPath } from '~/utils';
+import { authenticator } from 'app/services/auth.server';
 import styles from './index.module.scss';
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
     const products = await getEcomApi().getPromotedProducts();
     const canonicalUrl = getUrlOriginWithPath(request.url);
+
+    const isAuth = await authenticator.isAuthenticated(request);
+    console.log('isAuth', isAuth);
 
     return { products, canonicalUrl };
 };
@@ -19,8 +26,48 @@ export default function HomePage() {
 
     const { products } = useLoaderData<typeof loader>();
 
+    const login = () => {
+        const api = getEcomApi();
+        api.login();
+    };
+
+    const logout = () => {
+        const api = getEcomApi();
+        api.logout();
+    };
+
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [user, setUser] = useState<
+        members.GetMyMemberResponse & members.GetMyMemberResponseNonNullableFields
+    >();
+
+    useEffect(() => {
+        const api = getEcomApi();
+
+        api.getOrders().then((r) => console.log(r));
+
+        setLoggedIn(api.isLoggedIn());
+    }, []);
+
+    useEffect(() => {
+        if (!loggedIn) return;
+
+        const api = getEcomApi();
+
+        api.getUser().then((u) => setUser(u));
+    }, [loggedIn]);
+
     return (
         <div className={styles.root}>
+            <button className={commonStyles.primaryButton} onClick={login}>
+                LOGIN
+            </button>
+            <button className={commonStyles.primaryButton} onClick={logout}>
+                LOGOUT
+            </button>
+            <div>isLoggedIn: {loggedIn ? 'TRUE' : 'FALSE'}</div>
+            <div>{JSON.stringify(user?.member?.profile?.nickname, undefined, 2)}</div>
+
             <HeroImage
                 title="Incredible Prices on All Your Favorite Items"
                 topLabel="Best Prices"
