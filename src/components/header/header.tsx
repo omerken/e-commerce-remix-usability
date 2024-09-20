@@ -1,7 +1,7 @@
 import { NavLink } from '@remix-run/react';
 import classNames from 'classnames';
 import { useCartOpen } from '~/components/cart/cart-open-context';
-import { ROUTES } from '~/router/config';
+import { ROUTES } from '~/routes';
 import styles from './header.module.scss';
 
 export interface HeaderProps {

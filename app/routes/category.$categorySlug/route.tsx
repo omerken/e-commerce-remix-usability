@@ -1,14 +1,14 @@
-import classNames from 'classnames';
 import { LinksFunction, LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
-import { NavLink, useLoaderData, json, useRouteError, useNavigate, isRouteErrorResponse } from '@remix-run/react';
+import { isRouteErrorResponse, json, NavLink, useLoaderData, useNavigate, useRouteError } from '@remix-run/react';
+import classNames from 'classnames';
 import { getEcomApi } from '~/api/ecom-api';
 import { EcomApiErrorCodes } from '~/api/types';
 import { getImageHttpUrl } from '~/api/wix-image';
-import { ProductCard } from '~/components/product-card/product-card';
-import { ROUTES } from '~/router/config';
-import { getUrlOriginWithPath, isOutOfStock } from '~/utils';
 import { ErrorComponent } from '~/components/error-component/error-component';
+import { ProductCard } from '~/components/product-card/product-card';
+import { ROUTES } from '~/routes';
 import commonStyles from '~/styles/common-styles.module.scss';
+import { getUrlOriginWithPath, isOutOfStock } from '~/utils';
 import styles from './category.module.scss';
 
 export const loader = async ({ params, request }: LoaderFunctionArgs) => {

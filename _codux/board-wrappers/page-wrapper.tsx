@@ -2,7 +2,7 @@ import { isRouteErrorResponse, useNavigate, useRouteError } from '@remix-run/rea
 import { createRemixStub } from '@remix-run/testing';
 import App, { loader as rootLoader } from 'app/root';
 import { type PropsWithChildren } from 'react';
-import { ROUTES } from '~/router/config';
+import { ROUTES } from '~/routes';
 
 // @remix-run/testing doesn't export this type
 type StubRouteObject = Parameters<typeof createRemixStub>[0][0];

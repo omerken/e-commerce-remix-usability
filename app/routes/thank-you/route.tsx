@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { getEcomApi } from '~/api/ecom-api';
 import { OrderDetails } from '~/api/types';
 import { OrderSummary } from '~/components/order-summary/order-summary';
-import { ROUTES } from '~/router/config';
+import { ROUTES } from '~/routes';
 import commonStyles from '~/styles/common-styles.module.scss';
 import { getUrlOriginWithPath } from '~/utils';
 import styles from './thank-you.module.scss';

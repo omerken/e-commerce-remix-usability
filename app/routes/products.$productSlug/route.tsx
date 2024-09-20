@@ -4,18 +4,18 @@ import classNames from 'classnames';
 import { useRef, useState } from 'react';
 import { useAddToCart } from '~/api/api-hooks';
 import { getEcomApi } from '~/api/ecom-api';
+import { EcomApiErrorCodes } from '~/api/types';
 import { useCartOpen } from '~/components/cart/cart-open-context';
 import { ErrorComponent } from '~/components/error-component/error-component';
 import { Price } from '~/components/price/price';
 import { ProductAdditionalInfo } from '~/components/product-additional-info/product-additional-info';
 import { ProductImages } from '~/components/product-images/product-images';
 import { ProductOption } from '~/components/product-option/product-option';
-import { UnsafeRichText } from '~/components/rich-text/rich-text';
 import { getChoiceValue } from '~/components/product-option/product-option-utils';
-import { ROUTES } from '~/router/config';
-import { getPriceData, getUrlOriginWithPath, isOutOfStock } from '~/utils';
-import { EcomApiErrorCodes } from '~/api/types';
+import { UnsafeRichText } from '~/components/rich-text/rich-text';
+import { ROUTES } from '~/routes';
 import commonStyles from '~/styles/common-styles.module.scss';
+import { getPriceData, getUrlOriginWithPath, isOutOfStock } from '~/utils';
 import styles from './product-details.module.scss';
 
 export const loader = async ({ params, request }: LoaderFunctionArgs) => {

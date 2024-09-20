@@ -8,7 +8,7 @@ import ProductDetailsPage, {
     ErrorBoundary as productDetailsErrorBoundary,
     loader as productDetailsPageLoader,
 } from 'app/routes/products.$productSlug/route';
-import { ROUTES } from '~/router/config';
+import { ROUTES } from '~/routes';
 import { sleep } from './utils';
 
 const AppWrapper = createRemixStub([
