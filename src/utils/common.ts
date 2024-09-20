@@ -20,7 +20,15 @@ export function getErrorMessage(value: unknown): string {
     }
 
     if (isRouteErrorResponse(value)) {
-        return value.data;
+        if (typeof value.data == 'object' && value.data !== null) {
+            try {
+                return JSON.stringify(value.data);
+            } catch {
+                // ignore serialization failure
+            }
+        }
+
+        return String(value.data);
     }
 
     if (isEcomSDKError(value)) {
