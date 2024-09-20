@@ -1,6 +1,6 @@
 import { createBoard } from '@wixc3/react-board';
 import { useState } from 'react';
-import { Drawer } from '~/components/drawer/drawer';
+import { Drawer } from '~/components/drawer';
 
 export default createBoard({
     name: 'Drawer',

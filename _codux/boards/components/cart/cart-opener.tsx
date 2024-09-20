@@ -1,4 +1,4 @@
-import { useCartOpen } from '~/components/cart/cart-open-context';
+import { useCartOpen } from '~/components/cart';
 import commonStyles from '~/styles/common-styles.module.scss';
 
 export const CartOpener = () => {

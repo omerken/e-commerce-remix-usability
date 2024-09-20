@@ -13,8 +13,6 @@ import {
     FakeDataSettings as Settings,
 } from './fakers';
 
-export type FakeDataSettings = Settings;
-
 function getEcomApi(settings?: Settings): EcomAPI {
     faker.seed(123);
     const products = createProducts(settings);

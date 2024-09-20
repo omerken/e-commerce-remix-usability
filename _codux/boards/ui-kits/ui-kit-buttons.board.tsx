@@ -1,5 +1,5 @@
 import { NavLink } from '@remix-run/react';
-import { createBoard, Variant } from '@wixc3/react-board';
+import { Variant, createBoard } from '@wixc3/react-board';
 import classNames from 'classnames';
 import { MemoryRouter } from 'react-router-dom';
 import discordIcon from '~/assets/svg/discord.svg';

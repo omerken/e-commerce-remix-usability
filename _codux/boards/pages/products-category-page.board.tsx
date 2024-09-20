@@ -1,5 +1,5 @@
 import { createBoard } from '@wixc3/react-board';
-import { PageWrapper } from '_codux/board-wrappers/page-wrapper';
+import { PageWrapper } from '_codux/board-wrappers';
 import { sleep } from '_codux/boards/utils';
 import ProductsCategoryPage, { loader } from 'app/routes/category.$categorySlug/route';
 

@@ -1,4 +1,4 @@
-import { createBoard, Variant } from '@wixc3/react-board';
+import { Variant, createBoard } from '@wixc3/react-board';
 import classNames from 'classnames';
 import styles from '~/styles/ui-kit-typography.module.scss';
 

@@ -1,8 +1,7 @@
 import { createBoard } from '@wixc3/react-board';
-import ComponentWrapper from '_codux/board-wrappers/component-wrapper';
-import { MockEcomAPIContextProvider } from '_codux/mocks/mock-ecom-api-context-provider';
-import { Cart } from '~/components/cart/cart';
-import { CartOpenContextProvider } from '~/components/cart/cart-open-context';
+import { ComponentWrapper } from '_codux/board-wrappers';
+import { MockEcomAPIContextProvider } from '_codux/mocks';
+import { Cart, CartOpenContextProvider } from '~/components/cart';
 import { CartOpener } from './cart-opener';
 
 export default createBoard({

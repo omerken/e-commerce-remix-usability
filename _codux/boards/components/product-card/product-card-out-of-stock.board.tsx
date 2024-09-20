@@ -1,5 +1,5 @@
 import { createBoard } from '@wixc3/react-board';
-import { ProductCard } from '~/components/product-card/product-card';
+import { ProductCard } from '~/components/product-card';
 
 export default createBoard({
     name: 'Product Card - Out of stock',
