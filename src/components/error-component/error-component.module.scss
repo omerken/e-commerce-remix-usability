@@ -1,4 +1,3 @@
-@import '../../../src/styles/theme.module.scss';
 @import '@styles/typography.scss';
 
 .root {
@@ -13,14 +12,14 @@
 
 .h4 {
     font-weight: 900;
-    font-family: $my-prettyfont;
+    font-family: var(--my-prettyfont);
     font-style: italic;
     text-align: center;
     margin-bottom: 2px;
 }
 
 .p {
-    font-family: $my-prettyfont;
+    font-family: var(--my-prettyfont);
     font-weight: 300;
     font-size: 14px;
     text-align: center;

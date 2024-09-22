@@ -1,4 +1,4 @@
-@import '../../../src/styles/theme.module.scss';
+@import '@styles/typography.scss';
 
 .servererrorSvg {
     width: 400px;
@@ -19,14 +19,14 @@
 
 .h4 {
     font-weight: 900;
-    font-family: $my-prettyfont;
+    font-family: var(--my-prettyfont);
     font-style: italic;
     text-align: center;
     margin-bottom: 2px;
 }
 
 .p {
-    font-family: $my-prettyfont;
+    font-family: var(--my-prettyfont);
     font-weight: 300;
     font-size: 14px;
     text-align: center;
@@ -52,11 +52,11 @@
     cursor: pointer;
     padding-right: 16px;
     padding-left: 16px;
-    border: 1px solid $charcoal-black;
+    border: 1px solid var(--charcoal-black);
     z-index: 1;
 
     &:hover {
-        background-color: $white;
+        background-color: var(--white);
         border: 1px solid black;
         border-radius: 60%;
         padding-right: 20px;
@@ -71,11 +71,11 @@
     padding-top: 10px;
     padding-bottom: 10px;
     line-height: 1.45;
-    font-family: $my-prettyfont;
+    font-family: var(--my-prettyfont);
     font-style: normal;
     font-variant: normal;
     font-stretch: normal;
-    font: $extra-small-text;
+    font: var(--extra-small-text);
     font-weight: 400;
 }
 
@@ -83,7 +83,7 @@
     height: 42px;
     display: flex;
     align-items: center;
-    font: $small-text;
+    font: var(--small-text);
     border: 1px solid transparent;
     cursor: pointer;
     padding-right: 22px;
@@ -92,7 +92,7 @@
     z-index: 1;
 
     &:hover {
-        background-color: $white;
+        background-color: var(--white);
         border: 1px solid black;
         border-radius: 35px;
     }
@@ -106,5 +106,5 @@
     background-origin: padding-box;
     background-clip: border-box;
     background-color: #981f1f;
-    border: 1px solid $charcoal-black;
+    border: 1px solid var(--charcoal-black);
 }
