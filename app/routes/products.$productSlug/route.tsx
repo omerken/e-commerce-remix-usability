@@ -17,6 +17,7 @@ import { getPriceData, getSelectedVariant, getUrlOriginWithPath, isOutOfStock } 
 import { AddToCartOptions, EcomApiErrorCodes } from '~/api/types';
 import commonStyles from '~/styles/common-styles.module.scss';
 import styles from './product-details.module.scss';
+import { ProductNotFound } from '~/components/product-not-found/product-not-found';
 
 export const loader = async ({ params, request }: LoaderFunctionArgs) => {
     const productSlug = params.productSlug;
@@ -167,24 +168,11 @@ export function ErrorBoundary() {
     const navigate = useNavigate();
 
     if (isRouteErrorResponse(error)) {
-        let title: string;
-        let message: string | undefined;
         if (error.data.code === EcomApiErrorCodes.ProductNotFound) {
-            title = 'Product Not Found';
-            message = "Unfortunately product you trying to open doesn't exist";
+            return <ProductNotFound onActionButtonClick={() => navigate(ROUTES.category.to())} />;
         } else {
-            title = 'Failed to load product details';
-            message = error.data.message;
+            return <ErrorComponent onActionButtonClick={() => navigate(ROUTES.category.to())} />;
         }
-
-        return (
-            <ErrorComponent
-                title={title}
-                message={message}
-                actionButtonText="Back to shopping"
-                onActionButtonClick={() => navigate(ROUTES.category.to())}
-            />
-        );
     }
 
     throw error;
