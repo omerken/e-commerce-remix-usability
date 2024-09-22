@@ -1,8 +1,8 @@
 import { createBoard } from '@wixc3/react-board';
 import { PageWrapper } from '_codux/board-wrappers/page-wrapper';
+import { sleep } from '_codux/boards/utils';
 import { MockEcomAPIContextProvider } from '_codux/mocks/mock-ecom-api-context-provider';
-import ProductDetailsPage, { loader } from 'app/routes/products_.$productId/route';
-import { sleep } from '../utils';
+import ProductDetailsPage, { loader } from 'app/routes/products.$productSlug/route';
 
 export default createBoard({
     name: 'Page - ProductDetails',

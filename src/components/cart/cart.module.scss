@@ -1,7 +1,9 @@
-@import '@styles/theme.module.scss';
+@import '@styles/general.scss';
+@import '@styles/typography.scss';
+@import '@styles/colors.scss';
 
 .cart {
-    background-color: $white;
+    background-color: var(--white);
     padding: 15px 10px 10px;
     display: flex;
     flex-direction: column;
@@ -10,7 +12,7 @@
 }
 
 .emptyCart {
-    font: $large-thin-title;
+    font: var(--heading1);
     text-align: center;
     display: flex;
     align-items: center;
@@ -22,7 +24,7 @@
     overflow: auto;
 }
 
-.subtotal-checkout {
+.subtotalCheckout {
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -30,12 +32,14 @@
     direction: ltr;
     margin: 14px;
 }
+
 .checkout {
     width: 100%;
     text-align: center;
     justify-content: center;
 }
-.subtotal-label {
+
+.subtotalLabel {
     display: flex;
     justify-content: space-between;
     width: 100%;

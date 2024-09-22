@@ -1,28 +1,17 @@
-import { Cart } from './ecom-api-context-provider';
+import deepEqual from 'fast-deep-equal';
+import { AddToCartOptions, Cart } from './types';
 
-export function findItemIdInCart(
-    cart: Cart,
-    catalogItemId: string,
-    options?: Record<string, string>
-) {
-    return cart.lineItems.find((it) => {
+export function findItemIdInCart({ lineItems }: Cart, catalogItemId: string, options?: AddToCartOptions) {
+    return lineItems.find((it) => {
         if (it.catalogReference?.catalogItemId !== catalogItemId) {
             return false;
         }
-        const catalogOptions = it.catalogReference?.options?.options;
-        const optionsLength = options ? Object.keys(options).length : 0;
-        const catalogOptionsLength = catalogOptions ? Object.keys(catalogOptions).length : 0;
-        if (optionsLength !== catalogOptionsLength) {
-            return false;
+
+        if (options && 'variantId' in options) {
+            return it.catalogReference?.options?.variantId === options.variantId;
         }
-        if (!options || !catalogOptions) {
-            return true;
-        }
-        Object.keys(options).forEach((key) => {
-            if (options![key] !== catalogOptions[key]) {
-                return false;
-            }
-        });
-        return true;
+
+        const lineItemOptions = it.catalogReference?.options?.options;
+        return deepEqual(lineItemOptions, options?.options);
     });
 }

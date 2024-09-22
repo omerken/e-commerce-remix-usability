@@ -1,11 +1,11 @@
-@import '@styles/theme.module.scss';
+@import '@styles/general.scss';
 
 .root {
     padding-bottom: 90px;
 }
 
-.top-label-highlighted {
-    color: $white;
+.topLabelHighlighted {
+    color: var(--white);
     padding: 0 5px;
     display: inline-block;
     margin-bottom: 5%;
@@ -24,21 +24,22 @@
     width: 20vw;
 }
 
-.bestSeller {
-    font: $large-paragraph;
+.hpParagraph {
+    font: var(--large-paragraph);
     margin-bottom: 40px;
     text-align: center;
 }
 
-.hero-title {
+.heroTitle {
+    font: var(--heading1);
     margin-top: 80px;
-    font: $extra-large-thin-title;
+    font: var(--heading1);
     text-align: center;
 }
 
 // --- MEDIA QUERIES ---
 
-@media (430px < width < 980px) {
+@media ($mobile-width < width < $tablet-width) {
     .cardsLayout {
         column-gap: 4vw;
     }
@@ -47,12 +48,12 @@
         width: 40vw;
     }
 
-    .bestSeller {
-        font: $medium-paragraph-bold;
+    .hpParagraph {
+        font: var(--heading3);
     }
 }
 
-@media (width <= 430px) {
+@media (width <= $mobile-width) {
     .cardsLayout {
         column-gap: 20px;
     }
@@ -61,8 +62,8 @@
         width: 90vw;
     }
 
-    .bestSeller {
-        font: $large-title-mobile;
+    .hpParagraph {
+        font: var(--heading3);
         margin-bottom: 40px;
     }
 }

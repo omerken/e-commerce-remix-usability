@@ -1,11 +1,12 @@
-@import '@styles/theme.module.scss';
+@import '@styles/general.scss';
+@import '@styles/typography.scss';
 
 .root {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 64px;
-    font: $small-text;
+    font: var(--paragraph2);
     padding: 0 20px;
 }
 
@@ -17,19 +18,29 @@
 .menuButton {
     padding-right: 22px;
     padding-left: 22px;
+    font: var(--button-font);
+}
+
+.activeMenuItem {
+    font-weight: 500;
+}
+
+.cartButton {
+    cursor: pointer;
 }
 
 .logo {
-    font: 700 18px/1.5 $my-prettyfont;
+    font: 700 18px/1.5 var(--my-pretty-font);
     height: fit-content;
 }
 
-@media (width < 455px) {
+@media (width < $mobile-width) {
     .root {
         display: flex;
         justify-content: center;
         padding: 0px;
     }
+
     .logo {
         display: none;
     }

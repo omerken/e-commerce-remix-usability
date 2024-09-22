@@ -1,7 +1,11 @@
 import { LinksFunction, LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
 import { Link, useSearchParams } from '@remix-run/react';
-import CommonStyles_module from '~/styles/common-styles.module.scss';
+import { useEffect, useState } from 'react';
+import { getEcomApi } from '~/api/ecom-api';
+import { OrderDetails } from '~/api/types';
+import { OrderSummary } from '~/components/order-summary/order-summary';
 import { ROUTES } from '~/router/config';
+import commonStyles from '~/styles/common-styles.module.scss';
 import { getUrlOriginWithPath } from '~/utils';
 import styles from './thank-you.module.scss';
 
@@ -13,16 +17,44 @@ export default function ThankYouPage() {
     const [search] = useSearchParams();
     const orderId = search.get('orderId');
 
+    const [order, setOrder] = useState<OrderDetails>();
+    const [error, setError] = useState<string>();
+
+    const api = getEcomApi();
+
+    useEffect(() => {
+        if (orderId) {
+            api.getOrder(orderId).then((response) => {
+                if (response.status === 'success') {
+                    setOrder(response.body);
+                    setError(undefined);
+                } else {
+                    setError(response.error.message ?? 'Unknown error');
+                }
+            });
+        }
+    }, [api, orderId]);
+
     return (
         <div className={styles.root}>
             <div className={styles.text}>
                 <h1 className={styles.title}>Thank You!</h1>
-                <p className={styles.paragraph}>
-                    You will receive a confirmation email soon. Your order number: {orderId}
-                </p>
+                <div className={styles.paragraph}>
+                    <div>You will receive a confirmation email soon.</div>
+                    {order && <div>Your order number: {order.number}</div>}
+                </div>
             </div>
-            <Link to={ROUTES.products.to()}>
-                <button className={CommonStyles_module.primaryButton} type="button">
+
+            {order && <OrderSummary order={order} />}
+            {error && (
+                <div className={styles.errorContainer}>
+                    <h2>Could not load your order:</h2>
+                    <div>{error}</div>
+                </div>
+            )}
+
+            <Link to={ROUTES.category.to()}>
+                <button className={commonStyles.primaryButton} type="button">
                     Continue Shopping
                 </button>
             </Link>

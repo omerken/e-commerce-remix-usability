@@ -22,9 +22,32 @@ This project is more than just an example - it's a starter. The main goal here i
 
 1. Clone the repository in Codux and run the automated installation script.
 1. Create your [Wix Headless](https://dev.wix.com/docs/go-headless/getting-started/setup/general-setup/create-a-project) project and copy your client ID from Settings > Headless Settings > OAuth apps.
-1. Replace the current key in the project's `.env` file in Codux with this one.
+1. Copy and Rename [.env.template](./.env.template) to `.env`
+1. Replace the current key in the newly created `.env` file in Codux with your headless site client ID.
+1. Replace the current key in the [Codux Config](./codux.config.json) file in `previewConfiguration > environmentVariables` section with your headless site client ID.
 
 Now all you have to do is deploy your Remix app and manage your store through Wix!
+
+## Advanced features
+
+### Product categories
+
+You may categorize your products on a headless CMS back-office. Once product categories are added, they will appear on product category page in filter section.
+
+You may also want to add a link to a particular category directly to site header, in this case, please add this code snippet to a [header](./src/components/header/header.tsx) file:
+
+```
+    <NavLink
+        to={ROUTES.category.to('my-category')}
+        className={({ isActive }) =>
+            classNames(styles.menuButton, { [styles.activeMenuItem]: isActive })
+        }
+    >
+        My Category
+    </NavLink>
+```
+
+and replace `my-category` with your existing category name.
 
 ## Using Test Data
 

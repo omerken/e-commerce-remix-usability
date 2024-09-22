@@ -1,6 +1,7 @@
 @import '../../../src/styles/theme.module.scss';
+@import '@styles/typography.scss';
 
-.layout {
+.root {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,4 +35,18 @@
 }
 .div1 {
     margin-bottom: 4px;
+}
+
+.title {
+    font: var(--heading2);
+}
+
+.message {
+    margin-top: 12px;
+    font: var(--heading6);
+    max-width: 75vw;
+}
+
+.actionButton {
+    margin-top: 24px;
 }

@@ -1,9 +1,7 @@
-@import '@styles/theme.module.scss';
-
 .root {
     display: flex;
     flex-direction: column;
-    background-color: $snow-white;
+    background-color: var(--snow-white);
     column-gap: 5px;
     justify-content: center;
     align-content: center;
@@ -14,9 +12,12 @@
 }
 
 .paragraph {
-    margin-bottom: 24px;
-    font: $medium-title;
+    font: var(--paragraph1);
     text-align: center;
+}
+
+.paragraph div:first-child {
+    margin-bottom: 24px;
 }
 
 .text {
@@ -28,7 +29,13 @@
 }
 
 .title {
-    font: $extra-large-thin-title;
+    font: var(--heading1);
     text-align: center;
     letter-spacing: 6px;
+}
+
+.errorContainer {
+    font: var(--medium-title);
+    color: var(--red);
+    text-align: center;
 }

@@ -5,14 +5,27 @@ import {
     Scripts,
     ScrollRestoration,
     isRouteErrorResponse,
+    json,
+    useLoaderData,
+    useNavigate,
     useRouteError,
 } from '@remix-run/react';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { EcomAPIContextProvider } from '~/api/ecom-api-context-provider';
 import { CartOpenContextProvider } from '~/components/cart/cart-open-context';
+import { ErrorComponent } from '~/components/error-component/error-component';
 import { SiteWrapper } from '~/components/site-wrapper/site-wrapper';
 import { ROUTES } from '~/router/config';
 import '~/styles/index.scss';
+import { getErrorMessage } from '~/utils';
+
+export async function loader() {
+    return json({
+        ENV: {
+            WIX_CLIENT_ID: process?.env?.WIX_CLIENT_ID,
+        },
+    });
+}
 
 export function Layout({ children }: { children: React.ReactNode }) {
     return (
@@ -33,49 +46,58 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+    const data = useLoaderData<typeof loader>();
+
+    if (typeof window !== 'undefined' && typeof window.ENV === 'undefined') {
+        window.ENV = data.ENV;
+    }
+
     return (
-        <EcomAPIContextProvider>
-            <CartOpenContextProvider>
-                <SiteWrapper>
-                    <Outlet />
-                </SiteWrapper>
-            </CartOpenContextProvider>
-        </EcomAPIContextProvider>
+        <ContentWrapper>
+            <Outlet />
+        </ContentWrapper>
     );
 }
 
 export function ErrorBoundary() {
+    const locationRef = useRef<string | undefined>(typeof window !== 'undefined' ? window.location.href : undefined);
+
     const error = useRouteError();
 
-    const isRouteError = isRouteErrorResponse(error);
-
     useEffect(() => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const { title, message } = getErrorDetails(error);
+        const interval = setInterval(() => {
+            if (window.location.href !== locationRef.current) {
+                locationRef.current = window.location.href;
+                clearInterval(interval);
+                // force full page reload after navigating from error boundary
+                // to fix remix issue with style tags disappearing
+                window.location.reload();
+            }
+        }, 100);
+    }, []);
 
-        // hack to handle https://github.com/remix-run/remix/issues/1136
-        window.location.href = ROUTES.error.to(title, message);
-    }, [isRouteError, error]);
+    const navigate = useNavigate();
 
-    // we are navigating to the error page in the effect above
-    return null;
+    const isPageNotFoundError = isRouteErrorResponse(error) && error.status === 404;
+
+    return (
+        <ContentWrapper>
+            <ErrorComponent
+                title={isPageNotFoundError ? 'Page Not Found' : 'Oops, something went wrong'}
+                message={isPageNotFoundError ? undefined : getErrorMessage(error)}
+                actionButtonText="Back to shopping"
+                onActionButtonClick={() => navigate(ROUTES.category.to())}
+            />
+        </ContentWrapper>
+    );
 }
 
-function getErrorDetails(error: unknown) {
-    let title: string;
-    let message: string | undefined;
-
-    if (isRouteErrorResponse(error)) {
-        if (error.status === 404) {
-            title = 'Page Not Found';
-            message = "Looks like the page you're trying to visit doesn't exist";
-        } else {
-            title = `${error.status} - ${error.statusText}`;
-            message = error.data?.message ?? '';
-        }
-    } else {
-        title = 'Unknown error ocurred';
-    }
-
-    return { title, message };
+function ContentWrapper({ children }: React.PropsWithChildren) {
+    return (
+        <EcomAPIContextProvider>
+            <CartOpenContextProvider>
+                <SiteWrapper>{children}</SiteWrapper>
+            </CartOpenContextProvider>
+        </EcomAPIContextProvider>
+    );
 }

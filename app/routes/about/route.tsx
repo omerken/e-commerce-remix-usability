@@ -1,5 +1,5 @@
-import { LoaderFunctionArgs } from 'react-router-dom';
 import { LinksFunction, MetaFunction } from '@remix-run/node';
+import { LoaderFunctionArgs } from 'react-router-dom';
 import { getUrlOriginWithPath } from '~/utils';
 import styles from './about.module.scss';
 
@@ -13,10 +13,9 @@ export default function AboutPage() {
             <div className={styles.text}>
                 <h1 className={styles.title}>I&apos;m a Title</h1>
                 <p className={styles.paragraph}>
-                    I’m a paragraph. Add your own text and edit me on properties panel on the right.
-                    It’s easy. Just select me and make changes to the font on the styles panel on
-                    the right. I’m a great place for you to tell a story and let your viewers know a
-                    little more about you.
+                    I’m a paragraph. Add your own text and edit me on properties panel on the right. It’s easy. Just
+                    select me and make changes to the font on the styles panel on the right. I’m a great place for you
+                    to tell a story and let your viewers know a little more about you.
                 </p>
             </div>
             <img

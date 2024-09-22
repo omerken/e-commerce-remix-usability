@@ -1,17 +1,19 @@
 import { LinksFunction, LoaderFunctionArgs } from '@remix-run/node';
+import { Link, MetaFunction, useLoaderData, useNavigate, json } from '@remix-run/react';
+import { getEcomApi } from '~/api/ecom-api';
 import { HeroImage } from '~/components/hero-image/hero-image';
 import { ProductCard } from '~/components/product-card/product-card';
-import { Link, MetaFunction, useLoaderData, useNavigate } from '@remix-run/react';
-import { ecomApi } from '~/api/ecom-api';
 import { ROUTES } from '~/router/config';
-import { getUrlOriginWithPath } from '~/utils';
+import { getUrlOriginWithPath, isOutOfStock } from '~/utils';
 import styles from './index.module.scss';
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-    const products = await ecomApi.getPromotedProducts();
-    const canonicalUrl = getUrlOriginWithPath(request.url);
+    const productsResponse = await getEcomApi().getPromotedProducts();
+    if (productsResponse.status === 'failure') {
+        throw json(productsResponse.error);
+    }
 
-    return { products, canonicalUrl };
+    return { products: productsResponse.body, canonicalUrl: getUrlOriginWithPath(request.url) };
 };
 
 export default function HomePage() {
@@ -26,11 +28,11 @@ export default function HomePage() {
                 topLabel="Best Prices"
                 bottomLabel="Get more for less on selected brands"
                 buttonLabel="Shop Now"
-                topLabelClassName={styles['top-label-highlighted']}
-                onButtonClick={() => navigate('/products')}
+                topLabelClassName={styles.topLabelHighlighted}
+                onButtonClick={() => navigate(ROUTES.category.to())}
             />
-            <h1 className={styles['hero-title']}>Best Sellers</h1>
-            <p className={styles.bestSeller}>Shop our best seller items</p>
+            <h1 className={styles.heroTitle}>Best Sellers</h1>
+            <p className={styles.hpParagraph}>Shop our best seller items</p>
             <div className={styles.cardsLayout}>
                 {products?.map((product) =>
                     product.slug && product.name ? (
@@ -40,6 +42,7 @@ export default function HomePage() {
                                 name={product.name}
                                 price={product.priceData ?? undefined}
                                 className={styles.productCard}
+                                outOfStock={isOutOfStock(product)}
                             />
                         </Link>
                     ) : null

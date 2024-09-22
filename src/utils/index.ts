@@ -1,4 +1,2 @@
-export function getUrlOriginWithPath(url: string) {
-    const { origin, pathname } = new URL(url);
-    return new URL(pathname, origin).toString();
-}
+export * from './common';
+export * from './product-utils';
