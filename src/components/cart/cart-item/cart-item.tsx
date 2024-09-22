@@ -31,8 +31,18 @@ export const CartItem = ({ cartItem, className, isLast }: CartItemProps) => {
         }
     }
 
+    const isAvailable =
+        cartItem.availability?.status === cart.ItemAvailabilityStatus.AVAILABLE ||
+        cartItem.availability?.status === cart.ItemAvailabilityStatus.PARTIALLY_AVAILABLE;
+
     return (
-        <div className={classNames(styles.root, { [styles.divider]: !isLast }, className)}>
+        <div
+            className={classNames(
+                styles.root,
+                { [styles.divider]: !isLast, [styles.isOutOfStock]: !isAvailable },
+                className
+            )}
+        >
             <img src={imageUrl} alt={name || ''} className={styles.image} />
             <div className={styles.infoContainer}>
                 <div className={styles.itemLine}>
@@ -48,21 +58,25 @@ export const CartItem = ({ cartItem, className, isLast }: CartItemProps) => {
                     <button
                         onClick={() => removeItem(cartItem._id!)}
                         aria-label="Remove item"
-                        className={styles.remove}
+                        className={styles.removeButton}
                     >
                         <Cross2Icon height={20} width={18} />
                     </button>
                 </div>
 
-                <div className={styles.actionsContainer}>
-                    <input
-                        type="number"
-                        value={cartItem.quantity}
-                        onChange={updateQuantityHandler}
-                        min={0}
-                        className={commonStyles.numberInput}
-                    />
-                </div>
+                {isAvailable ? (
+                    <div className={styles.actionsContainer}>
+                        <input
+                            type="number"
+                            value={cartItem.quantity}
+                            onChange={updateQuantityHandler}
+                            min={0}
+                            className={commonStyles.numberInput}
+                        />
+                    </div>
+                ) : (
+                    <div>Out of stock</div>
+                )}
             </div>
         </div>
     );
