@@ -1,9 +1,8 @@
-@import '@styles/general.scss';
-@import '@styles/typography.scss';
-@import '@styles/colors.scss';
+@import '@styles/theme.module.scss';
+
 .root {
     position: relative;
-    color: var(--white);
+    color: $white;
 }
 
 .overlay {
@@ -23,59 +22,58 @@
     width: 100%;
 }
 
-.smallTitle {
-    font: var(--heading3);
+.small-title {
+    font: $medium-paragraph-bold;
     margin-top: 80px;
     font-size: 38px;
 }
 
-.bigTitle {
-    font: var(--heading1);
+.big-title {
+    max-width: 80%;
+    font: $extra-large-thin-title;
     line-height: 1.2;
     font-size: 85px;
     letter-spacing: 2px;
     margin-top: 25px;
-    max-width: 80%;
+    position: static;
 }
 
-.overlayButton {
+.overlay-button {
     margin-top: 68px;
 }
 
 // --- MEDIA QUERIES ---
 
-@media (width >= $desktop-width) {
-    .smallTitle {
+@media (width >= $large-desktop) {
+    .small-title {
         font-size: 42px;
     }
 
-    .bigTitle {
+    .big-title {
         max-width: 70%;
     }
 
-    .overlayButton {
+    .overlay-button {
         height: 47px;
     }
 }
 
 @media (width <= $mobile-width) {
     .overlay {
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 8vw;
     }
 
-    .smallTitle {
+    .small-title {
         font-size: 20px;
         margin-top: 40px;
     }
 
-    .bigTitle {
+    .big-title {
         font-size: 50px;
         margin-top: 11px;
-        max-width: 100%;
     }
 
-    .overlayButton {
+    .overlay-button {
         margin-top: 40px;
     }
 }
