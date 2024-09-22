@@ -33,7 +33,7 @@
     margin: 14px;
 }
 
-.checkout {
+.checkoutButton {
     width: 100%;
     text-align: center;
     justify-content: center;
@@ -45,4 +45,8 @@
     width: 100%;
     padding-left: 4px;
     padding-right: 4px;
+}
+
+.errorMessage {
+    color: var(--red);
 }
