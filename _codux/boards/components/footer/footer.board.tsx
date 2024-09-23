@@ -5,7 +5,7 @@ export default createBoard({
     name: 'Footer',
     Board: () => <Footer />,
     tags: ['Component'],
-    isSnippet: true,
+    isSnippet: false,
     environmentProps: {
         windowHeight: 220,
     },

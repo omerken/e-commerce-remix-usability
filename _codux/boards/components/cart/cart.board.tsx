@@ -19,7 +19,7 @@ export default createBoard({
         </ComponentWrapper>
     ),
     tags: ['Component', 'Cart'],
-    isSnippet: true,
+    isSnippet: false,
     environmentProps: {
         windowWidth: 350,
     },
