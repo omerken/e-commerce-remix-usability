@@ -35,7 +35,6 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
     }
 
     const canonicalUrl = getUrlOriginWithPath(request.url);
-
     return json({ product, canonicalUrl });
 };
 
