@@ -47,10 +47,5 @@
     "previewConfiguration": {
         "environmentVariables": {},
         "envFile": ".env"
-    },
-    "externalProviders": {
-        "wix": {
-            "projectId": "503e8547-cedb-4584-8250-a3a47a2747b2"
-        }
     }
 }
