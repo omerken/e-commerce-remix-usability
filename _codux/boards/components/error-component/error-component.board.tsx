@@ -5,9 +5,6 @@ export default createBoard({
     name: 'ErrorComponent',
     Board: () => (
         <ErrorComponent
-            title="Page Not Found"
-            message="Looks like the page you're trying to visit doesn't exist"
-            actionButtonText="Back to Home"
             onActionButtonClick={() => {}}
         />
     ),
